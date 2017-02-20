@@ -31,7 +31,6 @@ public class Ai_movement : MonoBehaviour {
 			movement = new Vector2(0, -1);
 		}
 		else if (time >= 240){
-			movement = new Vector2(1, 0);
 			time = 0;
 		}
 		transform.Translate(movement * speed);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
-
+	public static float playerHp;
     public float speed;
     public int artInRoom;
     private int artCollected;
@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		playerHp=1;
         artCollected = 0;
 		cardObtained=false;
 		door = GameObject.FindWithTag("secdoor");
@@ -27,6 +28,10 @@ public class Movement : MonoBehaviour {
 				renderer.color = new Color(1f,0f,1f,1f);
 			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
 			DestroyImmediate(comp);
+		}
+		if (playerHp==0){
+			Destroy(gameObject);
+			print("you have been caught");
 		}
 	}
 

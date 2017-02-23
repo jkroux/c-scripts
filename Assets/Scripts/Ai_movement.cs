@@ -15,11 +15,11 @@ public class Ai_movement : MonoBehaviour {
 	void Update()
 	{
 		time++;
-		if ((time == 60) || (time == 120) || (time == 180))
+		if ((time == 75) || (time == 150) || (time == 225))
 		{
 			transform.Rotate(0, 0, 90);
                 }
-                else if (time >= 240)
+                else if (time >= 300)
 		{
 			transform.Rotate(0, 0, 90);
 			time = 0;

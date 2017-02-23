@@ -7,10 +7,27 @@ public class Movement : MonoBehaviour {
     public float speed;
     public int artInRoom;
     private int artCollected;
+	static public bool cardObtained;
+	public GameObject door;
 
 	// Use this for initialization
 	void Start () {
         artCollected = 0;
+		cardObtained=false;
+		door = GameObject.FindWithTag("secdoor");
+		print ("press E to pick up objects");
+	}
+	public bool cardObtainedget(){
+		return(cardObtained);
+	}
+	void Update(){
+		if(cardObtained){
+				// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
+				SpriteRenderer renderer = (SpriteRenderer) door.GetComponent<Renderer>();
+				renderer.color = new Color(1f,0f,1f,1f);
+			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
+			DestroyImmediate(comp);
+		}
 	}
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -29,16 +46,22 @@ public class Movement : MonoBehaviour {
     }
 
     //OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
-        if (other.gameObject.CompareTag("Pickup")) {
+		if (other.gameObject.CompareTag("Pickup") && Input.GetKeyDown(KeyCode.E)) {
             other.gameObject.SetActive(false);
             artCollected++;
         }
-        else if (other.gameObject.CompareTag("Door")) {
+        if (other.gameObject.CompareTag("Door")) {
             if (artCollected == artInRoom) {
                 gameObject.SetActive(false);
-            }
-        }
+			}
+		}
+		if (other.gameObject.CompareTag("KeyCard") && Input.GetKeyDown(KeyCode.E)){
+			cardObtained=true;
+			print("card obtained");
+			other.gameObject.SetActive(false);
+		}
+			
     }
 }

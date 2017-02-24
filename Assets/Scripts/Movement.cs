@@ -9,12 +9,14 @@ public class Movement : MonoBehaviour {
     private int artCollected;
 	static public bool cardObtained;
 	public GameObject door;
+	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		playerHp=1;
         artCollected = 0;
 		cardObtained=false;
+		player = GameObject.FindWithTag("Player");
 		door = GameObject.FindWithTag("secdoor");
 		print ("press E to pick up objects");
 	}
@@ -30,7 +32,9 @@ public class Movement : MonoBehaviour {
 			DestroyImmediate(comp);
 		}
 		if (playerHp==0){
-			Destroy(gameObject);
+			SpriteRenderer render2 = (SpriteRenderer) player.GetComponent<Renderer>();
+			render2.color = new Color(.5f, .2f, 1f, 1f);
+			Destroy(gameObject,3);
 			print("you have been caught");
 		}
 	}

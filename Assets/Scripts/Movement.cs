@@ -9,20 +9,22 @@ public class Movement : MonoBehaviour {
     private int artCollected;
 	static public bool cardObtained;
 	public GameObject door;
-	public GameObject player;
+//	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		playerHp=1;
         artCollected = 0;
 		cardObtained=false;
-		player = GameObject.FindWithTag("Player");
-		door = GameObject.FindWithTag("secdoor");
+//		player = GameObject.FindWithTag("Player");
+//		door = GameObject.FindWithTag("secdoor");
 		print ("press E to pick up objects");
 	}
+
 	public bool cardObtainedget(){
 		return(cardObtained);
 	}
+
 	void Update(){
 		if(cardObtained){
 				// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
@@ -30,11 +32,13 @@ public class Movement : MonoBehaviour {
 				renderer.color = new Color(1f,0f,1f,1f);
 			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
 			DestroyImmediate(comp);
+//			comp.enabled = false;
 		}
 		if (playerHp==0){
-			SpriteRenderer render2 = (SpriteRenderer) player.GetComponent<Renderer>();
+			SpriteRenderer render2 = (SpriteRenderer) gameObject.GetComponent<Renderer>();
 			render2.color = new Color(.5f, .2f, 1f, 1f);
-			Destroy(gameObject,3);
+//			Destroy(gameObject,3);
+			gameObject.SetActive(false);
 			print("you have been caught");
 		}
 	}
@@ -70,6 +74,8 @@ public class Movement : MonoBehaviour {
 			cardObtained=true;
 			print("card obtained");
 			other.gameObject.SetActive(false);
+//			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
+//			comp.enabled = false;
 		}
 			
     }

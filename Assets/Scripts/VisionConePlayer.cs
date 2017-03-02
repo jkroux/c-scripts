@@ -29,8 +29,8 @@ public class VisionConePlayer : MonoBehaviour {
 		List<Vector2> viewPoint = new List<Vector2> ();
 		for (int i = 0; i <= stepCount; i++) {
 			float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
-			ViewCastInfo newViewCast = ViewCast (angle);
-			viewPoint.Add (newViewCast.point);
+			//ViewCastInfo newViewCast = ViewCast (angle);
+			//viewPoint.Add (newViewCast.point);
 		}
 		int vertexCount = viewPoint.Count+ 1;
 		Vector2[] vertices = new Vector2[vertexCount];
@@ -59,16 +59,16 @@ public class VisionConePlayer : MonoBehaviour {
 			}
 		}
 	}
-	ViewCastInfo ViewCast(float globalAngle) {
-		Vector2 dir = Angle (globalAngle, true);
-		RaycastHit hit;
-		if (Physics2D.Raycast(transform.position, dir,  hit, viewRadius, obstacleMask)){
-			return new ViewCastInfo (true, hit.point, hit.distance, globalAngle);
-		}
-		else{
-			return new ViewCastInfo (false, (Vector2) (transform.position + dir * viewRadius), viewRadius, globalAngle);
-		}
-	}
+//	ViewCastInfo ViewCast(float globalAngle) {
+//		Vector2 dir = Angle (globalAngle, true);
+//		RaycastHit hit;
+//		if (Physics2D.Raycast(transform.position, dir,  hit, (int) viewRadius, obstacleMask)){
+//			return new ViewCastInfo (true, hit.point, hit.distance, globalAngle);
+//		}
+//		else{
+//			return new ViewCastInfo (false, (Vector2) (transform.position + dir * viewRadius), viewRadius, globalAngle);
+//		}
+//	}
 
 	public Vector2 Angle(float angleInDegrees, bool angleIsGlobal){
 		if (!angleIsGlobal) {

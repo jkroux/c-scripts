@@ -77,15 +77,15 @@ public class Movement : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		print("register");
-		if (other.gameObject.CompareTag("Triggered"))
-		{
-			SpriteRenderer render = (SpriteRenderer)TripWire.gameObject.GetComponent<Renderer>();
-			render.color = new Color(0f, 0f, 0f, 1f);
-			Ai_movement comp = Gaurd.GetComponent("Ai_movement") as Ai_movement;
-			comp.speed = 3f;
-			print("got em");
-		}
+//		print("register");
+//		if (other.gameObject.CompareTag("Triggered"))
+//		{
+//			SpriteRenderer render = (SpriteRenderer)TripWire.gameObject.GetComponent<Renderer>();
+//			render.color = new Color(0f, 0f, 0f, 1f);
+//			Ai_movement comp = Gaurd.GetComponent("Ai_movement") as Ai_movement;
+//			comp.speed = 3f;
+//			print("got em");
+//		}
 			
     }
 }

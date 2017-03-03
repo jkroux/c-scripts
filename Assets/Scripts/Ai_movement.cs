@@ -54,16 +54,17 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 	void FixedUpdate(){
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.up,100f, mask);
-		if (hit.collider.tag=="Walls") {
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.up,Mathf.Infinity, mask);
+		if (hit.collider.tag=="Wall") {
 			canSee = false;
+			//chase = true;
 			print (canSee);
 		} 
 		else {
 			canSee = true;
 		}
-	
 	}
+		
 	void OnTriggerStay2D(Collider2D other){
 
 		if (other.gameObject.CompareTag("Player")&& canSee==true){

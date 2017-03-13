@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
-	public static float playerHp;
+	public static float playerHp; // no use?
     public float speed;
     public int artInRoom;
     private int artCollected;
 	static public bool cardObtained;
 	public GameObject door;
-	public GameObject TripWire;
-	public GameObject Gaurd;
+	public GameObject TripWire; //do we really need?
+	public GameObject Guard;
 
 	// Use this for initialization
 	void Start () {
@@ -20,21 +20,8 @@ public class Movement : MonoBehaviour {
 		print ("press E to pick up objects");
 	}
 
-	public bool cardObtainedget(){
-		return(cardObtained);
-	}
-
-	void Update(){
-		if (playerHp==0){
-			SpriteRenderer render2 = (SpriteRenderer) gameObject.GetComponent<Renderer>();
-			render2.color = new Color(.5f, .2f, 1f, 1f);
-			gameObject.SetActive(false);
-			print("you have been caught");
-		}
-	}
-
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-    void FixedUpdate () {
+    void FixedUpdate () {  //可以加一个 if（caught == false），player继续走动，这样如果是true的话，player自动停止
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
 
@@ -76,7 +63,8 @@ public class Movement : MonoBehaviour {
 			comp.enabled = false;
 		}
 	}
-	void OnTriggerEnter2D(Collider2D other){
+
+//	void OnTriggerEnter2D(Collider2D other){
 //		print("register");
 //		if (other.gameObject.CompareTag("Triggered"))
 //		{
@@ -87,5 +75,5 @@ public class Movement : MonoBehaviour {
 //			print("got em");
 //		}
 			
-    }
+//   }
 }

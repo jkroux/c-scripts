@@ -16,6 +16,7 @@ public class Ai_movement : MonoBehaviour
 	private float offsetX;
 	private float offsetY;
 	private float distance;
+	private bool caught;  //whether the player is caught or not. If it is true, the player will stop moving
 	int xDir, yDir; //no use?
 	Movement store; //no use?
 	float hp;  //no use?
@@ -33,6 +34,7 @@ public class Ai_movement : MonoBehaviour
 		xDir = 0;  //???
 		yDir = 0;  //????
 		canSee = true; 
+		caught = false;
 	}
 
 	// Update is called once per frame
@@ -59,7 +61,7 @@ public class Ai_movement : MonoBehaviour
 			if (distance < 0.5) {
 				SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer> ();
 				render2.color = new Color (.5f, .2f, 1f, 1f);
-				//player.SetActive (false);
+				caught = true;
 				print ("you have been caught");
 			} 
 			else {
@@ -98,5 +100,9 @@ public class Ai_movement : MonoBehaviour
 			BoxCollider2D collider = GetComponent<BoxCollider2D> ();
 			Vector2 boxBox=collider.size;
 		}
+	}
+
+	public bool getCaught(){
+		return (caught);
 	}
 }

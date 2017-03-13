@@ -21,18 +21,22 @@ public class Movement : MonoBehaviour {
 	}
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-    void FixedUpdate () {  //可以加一个 if（caught == false），player继续走动，这样如果是true的话，player自动停止
-        //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
+    void FixedUpdate () { 
+		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
+		bool caught = guardMovement.getCaught();
+		if (!caught) {
+			//Store the current horizontal input in the float moveHorizontal.
+			float moveHorizontal = Input.GetAxis ("Horizontal");
 
-        //Store the current vertical input in the float moveVertical.
-        float moveVertical = Input.GetAxis("Vertical");
+			//Store the current vertical input in the float moveVertical.
+			float moveVertical = Input.GetAxis ("Vertical");
 
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+			//Use the two store floats to create a new Vector2 variable movement.
+			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 
-        //Actually move the player's icon
-        transform.Translate(movement * speed);
+			//Actually move the player's icon
+			transform.Translate (movement * speed);
+		}
     }
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.

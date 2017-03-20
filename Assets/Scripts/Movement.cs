@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
-	public static float playerHp; // no use?
     public float speed;
     public int artInRoom;
     private int artCollected;
 	static public bool cardObtained;
 	public GameObject door;
-	public GameObject TripWire; //do we really need?
-	public GameObject Guard;
+	public GameObject guard;
+    public GameObject pauseHandler;
 
 	// Use this for initialization
 	void Start () {
-		playerHp=1;
         artCollected = 0;
 		cardObtained=false;
 		print ("press E to pick up objects");
@@ -22,19 +20,12 @@ public class Movement : MonoBehaviour {
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate () { 
-		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
+		Ai_movement guardMovement = guard.GetComponent<Ai_movement>();
 		bool caught = guardMovement.getCaught();
 		if (!caught) {
-			//Store the current horizontal input in the float moveHorizontal.
 			float moveHorizontal = Input.GetAxis ("Horizontal");
-
-			//Store the current vertical input in the float moveVertical.
 			float moveVertical = Input.GetAxis ("Vertical");
-
-			//Use the two store floats to create a new Vector2 variable movement.
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-
-			//Actually move the player's icon
 			transform.Translate (movement * speed);
 		}
     }
@@ -47,7 +38,14 @@ public class Movement : MonoBehaviour {
 		{
 			other.gameObject.SetActive(false);
 			artCollected++;
+
+            // Pauses the game when the player picks up a pickup. This will be useful later, when
+            // popups are implemented, but if it's happening right now and it's inconvenient,
+            // just comment these two lines out.
+            Pause pauseScript = pauseHandler.GetComponent<Pause>();
+            pauseScript.PauseGame();
 		}
+
 		if (other.gameObject.CompareTag("Door"))
 		{
 			if (artCollected == artInRoom)
@@ -74,7 +72,7 @@ public class Movement : MonoBehaviour {
 //		{
 //			SpriteRenderer render = (SpriteRenderer)TripWire.gameObject.GetComponent<Renderer>();
 //			render.color = new Color(0f, 0f, 0f, 1f);
-//			Ai_movement comp = Gaurd.GetComponent("Ai_movement") as Ai_movement;
+//			Ai_movement comp = guard.GetComponent("Ai_movement") as Ai_movement;
 //			comp.speed = 3f;
 //			print("got em");
 //		}

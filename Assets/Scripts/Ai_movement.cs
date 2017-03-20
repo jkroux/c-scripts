@@ -17,9 +17,6 @@ public class Ai_movement : MonoBehaviour
 	private float offsetY;
 	private float distance;
 	private bool caught;  //whether the player is caught or not. If it is true, the player will stop moving
-	int xDir, yDir; //no use?
-	Movement store; //no use?
-	float hp;  //no use?
 	bool canSee;  
 	LayerMask mask;
 
@@ -31,8 +28,6 @@ public class Ai_movement : MonoBehaviour
 		movement = new Vector2(1, 0);
 		target = player.transform;
 		chase = false;
-		xDir = 0;  //???
-		yDir = 0;  //????
 		canSee = true; 
 		caught = false;
 	}
@@ -69,6 +64,7 @@ public class Ai_movement : MonoBehaviour
 			}
 		}
 	}
+
 	void FixedUpdate(){
 		RaycastHit2D hit = Physics2D.Raycast (transform.position, movement, Mathf.Infinity, mask); //???direction of ray: Vector2.up?  I change this to "movement"
 		if (hit.collider.tag=="Wall") {

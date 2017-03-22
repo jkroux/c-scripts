@@ -12,9 +12,12 @@ public class Movement : MonoBehaviour {
 	public GameObject TripWire;
 	public GameObject Gaurd;
 
+
 	// Use this for initialization
 	void Start () {
 		playerHp=1;
+		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
+		playerBody.freezeRotation = true;
         artCollected = 0;
 		cardObtained=false;
 		print ("press E to pick up objects");

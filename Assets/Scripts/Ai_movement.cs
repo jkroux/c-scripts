@@ -77,21 +77,21 @@ public class Ai_movement : MonoBehaviour
 	}
 
 	//???
-	public void visionCircle(){
-		List<Vector2> dirVector = Angle ();
-		for (int i=0; i<=dirVector.Count;i++){
-			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector[i],1, mask);
-			if (hit.collider.tag=="Player") {  
-				canSee = true;
-				//chase = true;
-				print (canSee);
-			} 
-			else {
-				canSee = false;
-	
-		}
-	  }
-	}
+//	public void visionCircle(){
+//		List<Vector2> dirVector = Angle ();
+//		for (int i=0; i<=dirVector.Count;i++){
+//			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector[i],1, mask);
+//			if (hit.collider.tag=="Player") {  
+//				canSee = true;
+//				//chase = true;
+//				print (canSee);
+//			} 
+//			else {
+//				canSee = false;
+//	
+//		}
+//	  }
+//	}
 
 	void FixedUpdate(){
 		List<Vector2> dirVector = Angle ();
@@ -111,14 +111,14 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 
-	//do we still need this?
-	void OnTriggerStay2D(Collider2D other){
 
-		if (other.gameObject.CompareTag("Player")&& canSee==true){
-			chase = true;
-			other.gameObject.GetComponent<Movement>();
-		}
-	}
+//	void OnTriggerStay2D(Collider2D other){
+//
+//		if (other.gameObject.CompareTag("Player")&& canSee==true){
+//			chase = true;
+//			other.gameObject.GetComponent<Movement>();
+//		}
+//	}
 
 //	void OnTriggerEnter2d(Collider2D other){
 //		if (other.gameObject.CompareTag ("Walls")) {

@@ -14,9 +14,6 @@ public class Ai_movement : MonoBehaviour
 	private Vector2 movement;
 	private bool chase;	
 	private bool canSee;
-	private float offsetX;
-	private float offsetY;
-	private float distance;
 	private bool caught;
 	LayerMask mask;
 	public float visionAngle;
@@ -37,33 +34,57 @@ public class Ai_movement : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update(){
-		if (chase == false){
-			time++;
-			if ((time == 75) || (time == 150) || (time == 225)){
-				transform.Rotate(0, 0, 90);
-			}
-			else if (time >= 300){
-				transform.Rotate(0, 0, 90);
-				time = 0;
-			}
-			transform.Translate(movement * speed);
-		}
-		else {
-			offsetX = Mathf.Abs (transform.position.x - player.transform.position.x);
-			offsetY = Mathf.Abs (transform.position.y - player.transform.position.y);
-			distance = Mathf.Sqrt (Mathf.Pow (offsetX,2) + Mathf.Pow (offsetY,2));
-			if (distance < 0.5) {
-				SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer> ();
-				render2.color = new Color (.5f, .2f, 1f, 1f);
-				caught = true;
-				print ("you have been caught");
-			}
-			else {
-				ChasePlayer ();    //There is a bug in the ChasePlayer method. I will uncomment this when I fix this bug
-		}
-	  }
+	void Update() {
+        if (chase == false)
+        {
+            DefaultMovement();
+        }
+        else
+        {
+            float offsetX = Mathf.Abs(transform.position.x - player.transform.position.x);
+            float offsetY = Mathf.Abs(transform.position.y - player.transform.position.y);
+            float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
+
+            if (distance < 0.5)
+            {
+                SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
+                render2.color = new Color(.5f, .2f, 1f, 1f);
+                caught = true;
+                print("you have been caught");
+            }
+            else
+            {
+                ChasePlayer(offsetX, offsetY, distance);    //There is a bug in the ChasePlayer method. I will uncomment this when I fix this bug
+            }
+        }
 	}
+
+    void DefaultMovement()
+    {
+        time++;
+        if (time == 0)
+        {
+            movement = new Vector2(1, 0);
+        }
+        else if (time == 60)
+        {
+            movement = new Vector2(0, 1);
+        }
+        else if (time == 120)
+        {
+            movement = new Vector2(-1, 0);
+        }
+        else if (time == 180)
+        {
+            movement = new Vector2(0, -1);
+        }
+        else if (time >= 240)
+        {
+            movement = new Vector2(1, 0);
+            time = 0;
+        }
+        transform.Translate(movement * speed);
+    }
 
 	 public List<Vector2> Angle(){
 		float stepAngleSize = visionAngle / stepCount;
@@ -120,31 +141,9 @@ public class Ai_movement : MonoBehaviour
 //		}
 //	}
 
-//	void OnTriggerEnter2d(Collider2D other){
-//		if (other.gameObject.CompareTag ("Walls")) {
-//			Vector2 wall = other.gameObject.transform.position;
-//			float xWall = wall.x;
-//			float yWall = wall.y;
-//			BoxCollider2D collider = GetComponent<BoxCollider2D> ();
-//			//Vector2 boxBox=collider.size;
-//		}
-//	}
-
-	void ChasePlayer(){
-		Vector2 unitVector = new Vector2 (offsetX / distance, offsetY / distance);
-        if (transform.rotation == Quaternion.identity || Quaternion.Angle(transform.rotation, Quaternion.identity) == 180)
-        {
-            transform.Translate(unitVector * chasingSpeed);
-        }
-        else if (Quaternion.Angle(transform.rotation, Quaternion.identity) == 90 || Quaternion.Angle(transform.rotation, Quaternion.identity) == 270)
-        {
-            unitVector = Quaternion.Euler(-90, 0, 0) * unitVector;
-            transform.Translate(unitVector * chasingSpeed);
-        }
-        else
-        {
-            print("A guard is pointing in a direction it shouldn't be!");
-        }
+	void ChasePlayer(float x, float y, float d) {
+		Vector2 unitVector = new Vector2 (x/d, y/d);
+        transform.Translate(unitVector * chasingSpeed);
 	}
 
 	public bool getCaught(){

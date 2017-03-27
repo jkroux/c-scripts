@@ -60,7 +60,7 @@ public class Ai_movement : MonoBehaviour
 				print ("you have been caught");
 			}
 			else {
-		//		ChasePlayer ();    //There is a bug in the ChasePlayer method. I will uncomment this when I fix this bug
+				ChasePlayer ();    //There is a bug in the ChasePlayer method. I will uncomment this when I fix this bug
 		}
 	  }
 	}
@@ -132,7 +132,19 @@ public class Ai_movement : MonoBehaviour
 
 	void ChasePlayer(){
 		Vector2 unitVector = new Vector2 (offsetX / distance, offsetY / distance);
-		transform.Translate (unitVector * chasingSpeed);
+        if (transform.rotation == Quaternion.identity || Quaternion.Angle(transform.rotation, Quaternion.identity) == 180)
+        {
+            transform.Translate(unitVector * chasingSpeed);
+        }
+        else if (Quaternion.Angle(transform.rotation, Quaternion.identity) == 90 || Quaternion.Angle(transform.rotation, Quaternion.identity) == 270)
+        {
+            unitVector = Quaternion.Euler(-90, 0, 0) * unitVector;
+            transform.Translate(unitVector * chasingSpeed);
+        }
+        else
+        {
+            print("A guard is pointing in a direction it shouldn't be!");
+        }
 	}
 
 	public bool getCaught(){

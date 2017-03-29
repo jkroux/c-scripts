@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -817,8 +817,7 @@ MonoBehaviour:
   speed: 0.1
   artInRoom: 1
   door: {fileID: 1965874313}
-  guard: {fileID: 1189756597}
-  pauseHandler: {fileID: 2110244239}
+  Guard: {fileID: 1189756597}
 --- !u!212 &621634073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2300,7 +2299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88aea37e036e1848b33c4962879a6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!4 &2110244241
 Transform:
   m_ObjectHideFlags: 0

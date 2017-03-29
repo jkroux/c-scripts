@@ -66,19 +66,19 @@ public class Ai_movement : MonoBehaviour
         {
             movement = new Vector2(1, 0);
         }
-        else if (time == 60)
+        else if (time == 120)
         {
             movement = new Vector2(0, 1);
         }
-        else if (time == 120)
+        else if (time == 240)
         {
             movement = new Vector2(-1, 0);
         }
-        else if (time == 180)
+        else if (time == 360)
         {
             movement = new Vector2(0, -1);
         }
-        else if (time >= 240)
+        else if (time >= 480)
         {
             movement = new Vector2(1, 0);
             time = 0;

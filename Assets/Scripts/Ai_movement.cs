@@ -41,8 +41,8 @@ public class Ai_movement : MonoBehaviour
         }
         else
         {
-            float offsetX = Mathf.Abs(transform.position.x - player.transform.position.x);
-            float offsetY = Mathf.Abs(transform.position.y - player.transform.position.y);
+            float offsetX = (transform.position.x - player.transform.position.x);
+            float offsetY = (transform.position.y - player.transform.position.y);
             float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
 
             if (distance < 0.5)
@@ -54,7 +54,7 @@ public class Ai_movement : MonoBehaviour
             }
             else
             {
-                ChasePlayer(offsetX, offsetY, distance);    //There is a bug in the ChasePlayer method. I will uncomment this when I fix this bug
+                ChasePlayer(offsetX, offsetY, distance);
             }
         }
 	}
@@ -97,23 +97,6 @@ public class Ai_movement : MonoBehaviour
 		return viewPoint;
 	}
 
-	//???
-//	public void visionCircle(){
-//		List<Vector2> dirVector = Angle ();
-//		for (int i=0; i<=dirVector.Count;i++){
-//			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector[i],1, mask);
-//			if (hit.collider.tag=="Player") {  
-//				canSee = true;
-//				//chase = true;
-//				print (canSee);
-//			} 
-//			else {
-//				canSee = false;
-//	
-//		}
-//	  }
-//	}
-
 	void FixedUpdate(){
 		List<Vector2> dirVector = Angle ();
 		for (int i = 0; i < dirVector.Count; i++) {
@@ -132,18 +115,9 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 
-
-//	void OnTriggerStay2D(Collider2D other){
-//
-//		if (other.gameObject.CompareTag("Player")&& canSee==true){
-//			chase = true;
-//			other.gameObject.GetComponent<Movement>();
-//		}
-//	}
-
 	void ChasePlayer(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x/d, y/d);
-        transform.Translate(unitVector * chasingSpeed);
+        transform.Translate(unitVector * -chasingSpeed);
 	}
 
 	public bool getCaught(){

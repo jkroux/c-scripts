@@ -11,6 +11,7 @@ TagManager:
   - KeyCard
   - secdoor
   - secdoortrigger
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX

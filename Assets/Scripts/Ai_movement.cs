@@ -107,7 +107,7 @@ public class Ai_movement : MonoBehaviour
 					timer = 0;
 				} else if (hit.collider.tag != "Player") {
 					timer++;
-					if (timer >= 900 * 6) {  //????
+					if (timer >= 900 * 6) { 
 						chase = false;
 					}
 				}

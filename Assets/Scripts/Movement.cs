@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other)
 	{
 		//Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
-		if (other.gameObject.CompareTag("Pickup") && Input.GetKeyDown(KeyCode.E))
+		if (other.gameObject.CompareTag("Pickup"))
 		{
 			other.gameObject.SetActive(false);
 			artCollected++;
@@ -48,48 +48,16 @@ public class Movement : MonoBehaviour {
 				gameObject.SetActive(false);
 			}
 		}
-		if (other.gameObject.CompareTag("KeyCard") && Input.GetKeyDown(KeyCode.E))
+		if (other.gameObject.CompareTag("KeyCard"))
 		{
 			cardObtained = true;
 			print("card obtained");
 			other.gameObject.SetActive(false);
 			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
 			SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
-//<<<<<<< Updated upstream
 			renderer.color = new Color32(17, 161, 54, 255);
 			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
 			comp.enabled = false;
 		}
 	}
-
-//	void OnTriggerEnter2D(Collider2D other){
-//		print("register");
-//		if (other.gameObject.CompareTag("Triggered"))
-//		{
-//			SpriteRenderer render = (SpriteRenderer)TripWire.gameObject.GetComponent<Renderer>();
-//			render.color = new Color(0f, 0f, 0f, 1f);
-//			Ai_movement comp = Gaurd.GetComponent("Ai_movement") as Ai_movement;
-//			comp.speed = 3f;
-//			print("got em");
-//		}
-//=======
-//			renderer.color = new Color32(17, 161, 54, 255);
-//			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
-//			comp.enabled = false;
-//		}
-//	}
-
-//	void OnTriggerEnter2D(Collider2D other){
-//		print("register");
-//		if (other.gameObject.CompareTag("Triggered"))
-//		{
-//			SpriteRenderer render = (SpriteRenderer)TripWire.gameObject.GetComponent<Renderer>();
-//			render.color = new Color(0f, 0f, 0f, 1f);
-//			Ai_movement comp = Gaurd.GetComponent("Ai_movement") as Ai_movement;
-//			comp.speed = 3f;
-//			print("got em");
-//		}
-//>>>>>>> Stashed changes
-			
-//    }
 }

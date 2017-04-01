@@ -25,10 +25,10 @@ public class Movement : MonoBehaviour {
 		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
 		bool caught = guardMovement.getCaught();
 		if (!caught) {
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
-			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-			transform.Translate (movement * speed);
+			float moveHorizontal = Input.GetAxis("Horizontal");
+			float moveVertical = Input.GetAxis("Vertical");
+			Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+			transform.Translate(movement * speed);
 		}
     }
 

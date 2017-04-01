@@ -30,7 +30,7 @@ public class Ai_movement : MonoBehaviour
 		canSee = true;
 		timer=0;
 		List<Vector2> angleMeasure =Angle ();
-	
+		caught = false;
 	}
 
 	// Update is called once per frame

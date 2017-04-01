@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 270670736}
   - component: {fileID: 270670739}
   - component: {fileID: 270670738}
+  - component: {fileID: 270670740}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -271,6 +272,20 @@ MonoBehaviour:
   artInRoom: 2
   door: {fileID: 834479194}
   Guard: {fileID: 539890863}
+--- !u!58 &270670740
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270670735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &503495536
 GameObject:
   m_ObjectHideFlags: 0

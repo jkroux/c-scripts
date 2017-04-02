@@ -37,7 +37,7 @@ public class Ai_movement : MonoBehaviour
 	void Update() {
         if (chase == false)
         {
-            DefaultMovement();
+			//DefaultMovement ();
         }
         else
         {

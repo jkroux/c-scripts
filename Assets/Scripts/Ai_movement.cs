@@ -12,7 +12,7 @@ public class Ai_movement : MonoBehaviour
 	public GameObject player;
 
 	private Vector2 movement;
-	private bool chase;	
+	public bool chase;	
 	private bool canSee;
 	private bool caught;
 	LayerMask mask;
@@ -37,7 +37,7 @@ public class Ai_movement : MonoBehaviour
 	void Update() {
         if (chase == false)
         {
-			//DefaultMovement ();
+			DefaultMovement ();
         }
         else
         {

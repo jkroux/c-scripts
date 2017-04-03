@@ -32,12 +32,29 @@ public class Ai_movement : MonoBehaviour
 		List<Vector2> angleMeasure =Angle ();
 		caught = false;
 	}
+	public void fullChaseMethodForEZUse(){
+		float offsetX = (transform.position.x - player.transform.position.x);
+		float offsetY = (transform.position.y - player.transform.position.y);
+		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
+
+		if (distance < 0.5)
+		{
+			SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
+			render2.color = new Color(.5f, .2f, 1f, 1f);
+			caught = true;
+			print("you have been caught");
+		}
+		else
+		{
+			ChasePlayer(offsetX, offsetY, distance);
+		}
+	}
 
 	// Update is called once per frame
 	void Update() {
         if (chase == false)
         {
-			DefaultMovement ();
+			//DefaultMovement ();
         }
         else
         {
@@ -105,15 +122,17 @@ public class Ai_movement : MonoBehaviour
 				if (hit.collider.tag == "Player") {
 					chase = true;
 					timer = 0;
-				} else if (hit.collider.tag != "Player") {
+				} 
+			}
+			if (hit.collider==null || hit.collider.tag != "Player") {
 					timer++;
-					if (timer >= 900 * 6) { 
+				if (timer >= 900 * 6) { 
 						chase = false;
 					}
 				}
 			}
 		}
-	}
+
 
 	void ChasePlayer(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x/d, y/d);

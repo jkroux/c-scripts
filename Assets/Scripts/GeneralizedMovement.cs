@@ -37,10 +37,12 @@ public class GeneralizedMovement : MonoBehaviour {
 		float offsetX = (transform.position.x - work.position.x);
 		float offsetY = (transform.position.y - work.position.y);
 		float distance = Mathf.Sqrt (Mathf.Pow (offsetX, 2) + Mathf.Pow (offsetY, 2));
-
-		if (!script.chase){
-		ModableMovement (offsetX,offsetY,distance);
-		}
+		print (script.chase);
+		if (script.chase == false) {
+			ModableMovement (offsetX, offsetY, distance);
+		} else {
+			script.fullChaseMethodForEZUse ();
+		}	
 	}
 	bool RangeCheck(float x, float compareX){
 		if ((compareX - .5) < x && x < (compareX + .5)) {

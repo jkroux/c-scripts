@@ -55,6 +55,8 @@ public class Movement : MonoBehaviour {
 			other.gameObject.SetActive(false);
 			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
 			SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
+			// we should probably change this so that the door the keycard opens is a variable
+			// assigned to the keycard, not to the player
 			renderer.color = new Color32(17, 161, 54, 255);
 			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
 			comp.enabled = false;

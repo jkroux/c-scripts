@@ -34,6 +34,7 @@ public class Ai_movement : MonoBehaviour
 		List<Vector2> angleMeasure =Angle ();
 		caught = false;
 	}
+
 	public void fullChaseMethodForEZUse(){
 		float offsetX = (transform.position.x - player.transform.position.x);
 		float offsetY = (transform.position.y - player.transform.position.y);

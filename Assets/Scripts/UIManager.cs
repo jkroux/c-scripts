@@ -61,4 +61,10 @@ public class UIManager : MonoBehaviour {
 	public void LoadLevel(string level){
 		Application.LoadLevel(level);
 	}
+
+	//Quit the game
+	public void quit(){
+		Application.Quit ();
+		Debug.Log("Game is exiting");
+	}
 }

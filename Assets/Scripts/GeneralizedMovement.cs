@@ -21,6 +21,7 @@ public class GeneralizedMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//is there a way of creating list with Pos1-7 already in it rather than adding them separately?
 		list.Add (Pos1);
 		list.Add (Pos2);
 		list.Add (Pos3);
@@ -30,39 +31,39 @@ public class GeneralizedMovement : MonoBehaviour {
 		list.Add (Pos7);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		work = (Transform) list [indexforMovement];
-		Ai_movement script = (Ai_movement) gameObject.GetComponent<Ai_movement> ();
+	// Changed this from update to FixedUpdate so we won't have to worry about framerate
+	void FixedUpdate () {
+		work = (Transform) list[indexforMovement]; //why are we casting something that's already a transform?
+		Ai_movement script = gameObject.GetComponent<Ai_movement>();
 		float offsetX = (transform.position.x - work.position.x);
 		float offsetY = (transform.position.y - work.position.y);
-		float distance = Mathf.Sqrt (Mathf.Pow (offsetX, 2) + Mathf.Pow (offsetY, 2));
-		print (script.chase);
+		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
+		print(script.chase);
 		if (script.chase == false) {
 			ModableMovement (offsetX, offsetY, distance);
 		} else {
-			script.fullChaseMethodForEZUse ();
-		}	
+			script.fullChaseMethodForEZUse();
+		}
 	}
-	bool RangeCheck(float x, float compareX){
+
+	bool RangeCheck(float x, float compareX) {
 		if ((compareX - .5) < x && x < (compareX + .5)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	void ModableMovement(float x, float y, float d){
-		{
-			Vector2 unitVector = new Vector2 (x / d, y / d);
-			transform.Translate(unitVector * -speed);
-			if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y)  &&  indexforMovement < (numOfPatrolPoints-1)) {
-				print ("here");
-				indexforMovement++;
-			} 
-			else if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y) && indexforMovement == (numOfPatrolPoints-1)){
-				indexforMovement = 0;
-	}
+
+	void ModableMovement(float x, float y, float d) {
+		Vector2 unitVector = new Vector2 (x / d, y / d);
+		transform.Translate(unitVector * -speed);
+		if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y)  &&  indexforMovement <= (numOfPatrolPoints-1)) {
+			print ("here");
+			indexforMovement++;
+		} 
+		else if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y) && indexforMovement > (numOfPatrolPoints-1)){
+			indexforMovement = 0;
 		}
-	
 	}
+
 }

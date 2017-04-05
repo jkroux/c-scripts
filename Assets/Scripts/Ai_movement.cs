@@ -10,7 +10,7 @@ public class Ai_movement : MonoBehaviour
 	public float speed = 1;
 	public float chasingSpeed = 1;
 	public GameObject player;
-
+	public float accel = 1;
 	private Vector2 movement;
 	public bool chase;	
 	private bool canSee;
@@ -19,10 +19,12 @@ public class Ai_movement : MonoBehaviour
 	public float visionAngle;
 	public float stepCount;
 	private int timer;
-
+	public float counterofAccel=1;
+	private float accelHold;
 	// Use this for initialization
 	void Start()
 	{
+		accelHold = accel;
 		mask = 1 << 2;
 		mask = ~mask;
 		movement = new Vector2(1, 0);
@@ -126,8 +128,9 @@ public class Ai_movement : MonoBehaviour
 			}
 			if (hit.collider==null || hit.collider.tag != "Player") {
 					timer++;
-				if (timer >= 900 * 6) { 
+				if (timer >= 900 * 15) { 
 						chase = false;
+					accel = accelHold;
 					}
 				}
 			}
@@ -136,7 +139,15 @@ public class Ai_movement : MonoBehaviour
 
 	void ChasePlayer(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x/d, y/d);
-        transform.Translate(unitVector * -chasingSpeed);
+		if (accel <1) {
+			transform.Translate (unitVector * (-chasingSpeed*accel));
+			accel = accel + (counterofAccel/80);
+		}
+
+		else{
+			print("hello I am no longer accelerating");
+			transform.Translate (unitVector * -chasingSpeed);
+		}
 	}
 
 	public bool getCaught(){

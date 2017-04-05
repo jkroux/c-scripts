@@ -49,6 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sight
+    uniqueID: 3058453493
+    locked: 0
   - name: Wall
     uniqueID: 4035198461
     locked: 0

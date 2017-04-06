@@ -22,10 +22,10 @@ TagManager:
   - 
   - 
   - Collision
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Level
+  - TitleBackground
+  - Title
   - 
   - 
   - 
@@ -49,8 +49,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Sight
+  - name: Background
     uniqueID: 3058453493
+    locked: 0
+  - name: Level
+    uniqueID: 176935457
+    locked: 0
+  - name: TitleBackground
+    uniqueID: 3563999055
+    locked: 0
+  - name: Title
+    uniqueID: 3933910723
     locked: 0
   - name: Wall
     uniqueID: 4035198461

@@ -32,6 +32,10 @@ public class Movement : MonoBehaviour {
 		}
     }
 
+	void transitionMenu(){
+		Application.LoadLevel("Transition");
+	}
+
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -46,6 +50,7 @@ public class Movement : MonoBehaviour {
 			if (artCollected == artInRoom)
 			{
 				gameObject.SetActive(false);
+				transitionMenu ();
 			}
 		}
 		if (other.gameObject.CompareTag("KeyCard"))

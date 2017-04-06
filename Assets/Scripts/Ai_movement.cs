@@ -71,6 +71,7 @@ public class Ai_movement : MonoBehaviour
                 render2.color = new Color(.5f, .2f, 1f, 1f);
                 caught = true;
                 print("you have been caught");
+				Application.LoadLevel("Transition");
             }
             else
             {

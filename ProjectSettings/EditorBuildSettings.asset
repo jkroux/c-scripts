@@ -11,3 +11,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
   - enabled: 1
     path: Assets/Scenes/First Project.unity
+  - enabled: 1
+    path: Assets/Scenes/Instruction.unity
+  - enabled: 1
+    path: Assets/Scenes/Transition.unity

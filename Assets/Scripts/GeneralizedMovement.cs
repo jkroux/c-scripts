@@ -57,11 +57,11 @@ public class GeneralizedMovement : MonoBehaviour {
 	void ModableMovement(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x / d, y / d);
 		transform.Translate(unitVector * -speed);
-		if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y)  &&  indexforMovement <= (numOfPatrolPoints-1)) {
+		if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y)  &&  indexforMovement <= (numOfPatrolPoints-2)) {
 			print ("here");
 			indexforMovement++;
 		} 
-		else if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y) && indexforMovement > (numOfPatrolPoints-1)){
+		else if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y) && indexforMovement > (numOfPatrolPoints-2)){
 			indexforMovement = 0;
 		}
 	}

@@ -7,12 +7,13 @@ using System.Collections.Generic;
 public class Ai_movement : MonoBehaviour
 {
 	public int time = 0;
+	private float toggle =0;
 	public float speed = 1;
 	public float chasingSpeed = 1;
 	public GameObject player;
 	public float accel = 1;
 	private Vector2 movement;
-	public bool chase;	
+	public float chase;	
 	private bool canSee;
 	private bool caught;
 	LayerMask mask;
@@ -21,14 +22,19 @@ public class Ai_movement : MonoBehaviour
 	private int timer;
 	public float counterofAccel=1;
 	private float accelHold;
+	private float timer2=0;
+	private Color originalGaurd;
+
 	// Use this for initialization
 	void Start()
 	{
+		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+		originalGaurd = gaurdchange.color;
 		accelHold = accel;
 		mask = 1 << 2;
 		mask = ~mask;
 		movement = new Vector2(1, 0);
-		chase = false;
+		chase = 1;
 		canSee = true;
 		timer=0;
 		List<Vector2> angleMeasure =Angle ();
@@ -49,14 +55,20 @@ public class Ai_movement : MonoBehaviour
 		}
 		else
 		{
-			ChasePlayer(offsetX, offsetY, distance);
+			toggle++;
+			if (toggle >= 5){
+				SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+				gaurdchange.color = new Color (.8F, .3F, .4F);
+				ChasePlayer(offsetX, offsetY, distance);
 		}
+	}
 	}
 
 	// Update is called once per frame
 	void Update() {
-        if (chase == false)
+		if (chase == 1 || chase==3)
         {
+			
 			//DefaultMovement ();
         }
         else
@@ -124,19 +136,29 @@ public class Ai_movement : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector [i], 2, mask);
 			if (hit.collider != null) {
 				if (hit.collider.tag == "Player") {
-					chase = true;
+					chase = 2;
 					timer = 0;
 				} 
 			}
 			if (hit.collider==null || hit.collider.tag != "Player") {
 					timer++;
-				if (timer >= 900 * 15) { 
-						chase = false;
-					accel = accelHold;
-					}
+				if (timer >= 900 * 15 && chase!=1) {
+					chase = 3;
+					transform.Translate (Vector2.zero);
+					if (timer2 < 900*15) {
+						timer2++;
+					} 
+					else {
+						SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+						chase = 1;
+						timer2 = 0;
+						gaurdchange.color = originalGaurd;
+						accel = accelHold;
+			}
 				}
 			}
 		}
+	}
 
 
 	void ChasePlayer(float x, float y, float d) {

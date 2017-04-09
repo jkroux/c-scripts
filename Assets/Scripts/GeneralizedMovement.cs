@@ -39,9 +39,9 @@ public class GeneralizedMovement : MonoBehaviour {
 		float offsetY = (transform.position.y - work.position.y);
 		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
 		print(script.chase);
-		if (script.chase == false) {
+		if (script.chase == 1) {
 			ModableMovement (offsetX, offsetY, distance);
-		} else {
+		} else if (script.chase !=3){
 			script.fullChaseMethodForEZUse();
 		}
 	}

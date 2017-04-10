@@ -24,6 +24,7 @@ public class Ai_movement : MonoBehaviour
 	private float accelHold;
 	private float timer2=0;
 	private Color originalGaurd;
+	public int waitForIt=9;
 
 	// Use this for initialization
 	void Start()
@@ -145,7 +146,7 @@ public class Ai_movement : MonoBehaviour
 				if (timer >= 900 * 15 && chase!=1) {
 					chase = 3;
 					transform.Translate (Vector2.zero);
-					if (timer2 < 900*15) {
+					if (timer2 < waitForIt*1500) {
 						timer2++;
 					} 
 					else {

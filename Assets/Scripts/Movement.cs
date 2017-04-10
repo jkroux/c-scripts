@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour {
 			if (artCollected == artInRoom)
 			{
 				gameObject.SetActive(false);
-				transitionMenu ();
+				Invoke("transitionMenu",2);
 			}
 		}
 		if (other.gameObject.CompareTag("KeyCard"))

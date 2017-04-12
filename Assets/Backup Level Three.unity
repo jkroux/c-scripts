@@ -325,6 +325,11 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &937745280 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1201780572627766, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1968050230}
 --- !u!1001 &982622603
 Prefab:
   m_ObjectHideFlags: 0
@@ -658,6 +663,7 @@ GameObject:
   - component: {fileID: 1111916346}
   - component: {fileID: 1111916345}
   - component: {fileID: 1111916344}
+  - component: {fileID: 1111916349}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -733,6 +739,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111916349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1111916343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883f2d6029e274cd4af93e14643510c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 937745280}
 --- !u!1001 &1283061634
 Prefab:
   m_ObjectHideFlags: 0

@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 	GameObject[] pauseObjects;
+	public GameObject player;
+	private int previousScene;
+	private int nextScene;
 
 	void Start () {
+		previousScene = PlayerPrefs.GetInt( "previousScene" );
+		nextScene = previousScene + 1;
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		hidePaused();
@@ -28,7 +34,7 @@ public class UIManager : MonoBehaviour {
 
 	//Restart Button's method
 	public void Reload(){
-		Application.LoadLevel(Application.loadedLevel);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	//Play Button's method
@@ -59,12 +65,20 @@ public class UIManager : MonoBehaviour {
 
 	//Homepage Button's method
 	public void LoadLevel(string level){
-		Application.LoadLevel(level);
+		SceneManager.LoadScene(level);
 	}
 
 	//Quit the game
 	public void quit(){
 		Application.Quit ();
 		Debug.Log("Game is exiting");
+	}
+
+	public void replay(){
+		SceneManager.LoadScene(previousScene);
+	}
+
+	public void nextLevel(){
+		SceneManager.LoadScene(nextScene);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
     public float speed;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		PlayerPrefs.SetInt("previousScene", Application.loadedLevel);
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
         artCollected = 0;
@@ -25,15 +27,15 @@ public class Movement : MonoBehaviour {
 		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
 		bool caught = guardMovement.getCaught();
 		if (!caught) {
-			float moveHorizontal = Input.GetAxis("Horizontal");
-			float moveVertical = Input.GetAxis("Vertical");
-			Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-			transform.Translate(movement * speed);
-		}
+			float moveHorizontal = Input.GetAxis ("Horizontal");
+			float moveVertical = Input.GetAxis ("Vertical");
+			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+			transform.Translate (movement * speed);
+		} 
     }
 
 	void transitionMenu(){
-		Application.LoadLevel("Transition");
+		SceneManager.LoadScene("Transition");
 	}
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
@@ -50,7 +52,7 @@ public class Movement : MonoBehaviour {
 			if (artCollected == artInRoom)
 			{
 				gameObject.SetActive(false);
-				Invoke("transitionMenu",2);
+				Invoke("transitionMenu",1);
 			}
 		}
 		if (other.gameObject.CompareTag("KeyCard"))

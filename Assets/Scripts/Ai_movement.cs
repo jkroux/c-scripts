@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 // movement to player solved using unity tutorial
 //http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 //box collider resizing.
@@ -84,7 +85,7 @@ public class Ai_movement : MonoBehaviour
                 render2.color = new Color(.5f, .2f, 1f, 1f);
                 caught = true;
                 print("you have been caught");
-				Application.LoadLevel("Transition");
+				SceneManager.LoadScene("Caught");
             }
             else
             {

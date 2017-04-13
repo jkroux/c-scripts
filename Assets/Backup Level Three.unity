@@ -159,6 +159,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4063777617967626, guid: 6877e5cf6e00f4c43ac769b34ca69f0f,
     type: 2}
   m_PrefabInternal: {fileID: 527454376}
+--- !u!1 &527454378 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1651102174515878, guid: 6877e5cf6e00f4c43ac769b34ca69f0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 527454376}
 --- !u!1 &593473319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,14 +1137,14 @@ Prefab:
         type: 2}
       propertyPath: door
       value: 
-      objectReference: {fileID: 1201780572627766, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
-        type: 2}
+      objectReference: {fileID: 527454378}
     - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
         type: 2}
       propertyPath: artInRoom
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2009105407

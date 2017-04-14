@@ -85,7 +85,7 @@ public class Ai_movement : MonoBehaviour
                 render2.color = new Color(.5f, .2f, 1f, 1f);
                 caught = true;
                 print("you have been caught");
-				SceneManager.LoadScene("Caught");
+				StartCoroutine(LevelLoad("Caught"));
             }
             else
             {
@@ -178,6 +178,11 @@ public class Ai_movement : MonoBehaviour
 
 	public bool getCaught(){
 		return (caught);
+	}
+
+	IEnumerator LevelLoad(string name){
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(name);
 	}
 
 }

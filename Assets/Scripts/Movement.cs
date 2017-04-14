@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour {
     private int artCollected;
 	static public bool cardObtained;
 	public GameObject door;
-	public GameObject secdoor;
 	public GameObject Guard;
 
 
@@ -34,7 +33,10 @@ public class Movement : MonoBehaviour {
 			transform.Translate (movement * speed);
 		} 
     }
-		
+
+	void transitionMenu(){
+		SceneManager.LoadScene("Transition");
+	}
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
 	void OnTriggerStay2D(Collider2D other)
@@ -44,19 +46,13 @@ public class Movement : MonoBehaviour {
 		{
 			other.gameObject.SetActive(false);
 			artCollected++;
-			if (artCollected == artInRoom) {
-				SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
-				renderer.color = new Color32(25, 0, 5, 255);
-			}
 		}
 		if (other.gameObject.CompareTag("Door"))
 		{
 			if (artCollected == artInRoom)
 			{
 				gameObject.SetActive(false);
-//				StartCoroutine(wait());
 				Invoke("transitionMenu",1);
-
 			}
 		}
 		if (other.gameObject.CompareTag("KeyCard"))
@@ -65,23 +61,12 @@ public class Movement : MonoBehaviour {
 			print("card obtained");
 			other.gameObject.SetActive(false);
 			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
-			SpriteRenderer renderer = (SpriteRenderer)secdoor.GetComponent<Renderer>();
+			SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
 			// we should probably change this so that the door the keycard opens is a variable
 			// assigned to the keycard, not to the player
 			renderer.color = new Color32(17, 161, 54, 255);
-			BoxCollider2D comp = secdoor.GetComponent("BoxCollider2D") as BoxCollider2D;
+			BoxCollider2D comp = door.GetComponent("BoxCollider2D") as BoxCollider2D;
 			comp.enabled = false;
 		}
-			
 	}
-
-	void transitionMenu(){
-		SceneManager.LoadScene("Transition");
-	}
-
-
-//	IEnumerator wait() {
-//		yield return new WaitForSeconds(2f);
-//		SceneManager.LoadScene("Transition");
-//	}
 }

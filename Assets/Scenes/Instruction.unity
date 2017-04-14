@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 791010800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -206, y: 2, z: -244.35962}
+  m_LocalPosition: {x: -205, y: 2, z: 1}
   m_LocalScale: {x: 25, y: 25, z: 2.715107}
   m_Children: []
   m_Father: {fileID: 2107131697}
@@ -628,7 +628,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -602226767
+  m_SortingLayerID: 586192495
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6c30018e985396e48a0c12ad60061c0e, type: 3}
   m_Color: {r: 0.986207, g: 1, b: 0, a: 1}
@@ -711,6 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1292737400}
   - component: {fileID: 1292737399}
+  - component: {fileID: 1292737401}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -743,6 +744,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1292737401
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1292737398}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 66f43bbdf144c8b46bbf538308b5d2b2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1302434753
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,8 +1043,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1606929942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 142, y: 4, z: -244.35962}
-  m_LocalScale: {x: 100, y: 20, z: 2.715107}
+  m_LocalPosition: {x: 134, y: 5, z: 1}
+  m_LocalScale: {x: 80, y: 20, z: 2.715107}
   m_Children: []
   m_Father: {fileID: 2107131697}
   m_RootOrder: 4
@@ -997,7 +1078,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 586192495
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2ff066cdc1407e84eade28e70dc19d7c, type: 3}
   m_Color: {r: 0, g: 0.8014706, b: 0.10502039, a: 1}
@@ -1162,7 +1243,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865691778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 87, y: 30, z: 0}
+  m_LocalPosition: {x: 120, y: 31, z: 1}
   m_LocalScale: {x: 25, y: 25, z: 0.98280096}
   m_Children: []
   m_Father: {fileID: 2107131697}
@@ -1226,7 +1307,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1955967880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -201, y: -67, z: -244.35962}
+  m_LocalPosition: {x: -201, y: -67, z: 1}
   m_LocalScale: {x: 20, y: 50, z: 2.715107}
   m_Children: []
   m_Father: {fileID: 2107131697}
@@ -1261,7 +1342,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 586192495
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6754ef8e2800d20459d6f5e897bae299, type: 3}
   m_Color: {r: 0.986207, g: 1, b: 0, a: 1}

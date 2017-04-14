@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour {
 
 	void Start () {
 		previousScene = PlayerPrefs.GetInt( "previousScene" );
+//		previousScene = SceneManager.GetSceneAt(previousSceneInt).name();
 		nextScene = previousScene + 1;
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
@@ -63,10 +64,28 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
-	//Homepage Button's method
-	public void LoadLevel(string level){
-		SceneManager.LoadScene(level);
+//	//Homepage Button's method
+//	public void LoadLevel(string level){
+//		SceneManager.LoadScene(level);
+//	}
+
+	//function to be called to go to another scene
+	public void LoadScene(string name){
+		StartCoroutine(LevelLoad(name));
+	} 
+
+	//load level by name after one sceond delay
+	IEnumerator LevelLoad(string name){
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(name);
 	}
+
+	//load level by index after one sceond delay
+	IEnumerator LevelLoad(int index){
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(index);
+	}
+
 
 	//Quit the game
 	public void quit(){
@@ -75,10 +94,10 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void replay(){
-		SceneManager.LoadScene(previousScene);
+		StartCoroutine(LevelLoad(previousScene));
 	}
 
 	public void nextLevel(){
-		SceneManager.LoadScene(nextScene);
+		StartCoroutine(LevelLoad(nextScene));
 	}
 }

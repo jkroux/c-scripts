@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour {
 		}
 		if (other.gameObject.CompareTag("KeyCard"))
 		{
-			cardObtained = true;
+			cardObtained = true; //this line, and even this variable, seems redundant
 			print("card obtained");
 			other.gameObject.SetActive(false);
 			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/

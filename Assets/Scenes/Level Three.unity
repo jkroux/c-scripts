@@ -339,7 +339,7 @@ Transform:
   - {fileID: 1963852069}
   - {fileID: 1350568202}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276955693
 GameObject:
@@ -1932,7 +1932,7 @@ Transform:
   - {fileID: 2028924823}
   - {fileID: 1005226009}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163503369
 GameObject:
@@ -3034,7 +3034,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4459404800312658, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
         type: 2}
@@ -3052,6 +3052,11 @@ Prefab:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: secdoor
+      value: 
+      objectReference: {fileID: 2028924820}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_IsPrefabParent: 0

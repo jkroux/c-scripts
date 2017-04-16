@@ -907,6 +907,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1081155795 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1843723657248848, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1352854892}
 --- !u!1 &1086570781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2381,16 @@ Prefab:
       propertyPath: secdoor
       value: 
       objectReference: {fileID: 560943378}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: Guard1
+      value: 
+      objectReference: {fileID: 539890863}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: Guard2
+      value: 
+      objectReference: {fileID: 1081155795}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_IsPrefabParent: 0

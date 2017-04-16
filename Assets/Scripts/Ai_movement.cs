@@ -84,7 +84,8 @@ public class Ai_movement : MonoBehaviour
                 SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
                 render2.color = new Color(.5f, .2f, 1f, 1f);
                 caught = true;
-                print("you have been caught");
+				Movement playerMovement = player.GetComponent<Movement>();
+				playerMovement.enabled = false;
 				StartCoroutine(LevelLoad("Caught"));
             }
             else

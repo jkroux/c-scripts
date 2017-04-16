@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
 	static public bool cardObtained;
 	public GameObject door;
 	public GameObject secdoor;
-	public GameObject Guard;
+//	public GameObject Guard;
 
 
 	// Use this for initialization
@@ -25,14 +25,14 @@ public class Movement : MonoBehaviour {
 		
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate () {
-		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
-		bool caught = guardMovement.getCaught();
-		if (!caught) {
+//		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
+//		bool caught = guardMovement.getCaught();
+//		if (!caught) {
 			float moveHorizontal = Input.GetAxis ("Horizontal");
 			float moveVertical = Input.GetAxis ("Vertical");
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 			transform.Translate (movement * speed);
-		} 
+//		} 
     }
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.

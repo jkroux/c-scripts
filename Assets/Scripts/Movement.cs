@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour {
 			artCollected++;
 			if (artCollected == artInRoom) {
 				SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
-				renderer.color = new Color32(25, 0, 5, 255);
+				renderer.color = new Color32(0,200, 0, 255);
 			}
 		}
 		if (other.gameObject.CompareTag("Door"))
@@ -61,13 +61,14 @@ public class Movement : MonoBehaviour {
 			cardObtained = true; //this line, and even this variable, seems redundant
 			print("card obtained");
 			other.gameObject.SetActive(false);
-			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
-			SpriteRenderer renderer = (SpriteRenderer)secdoor.GetComponent<Renderer>();
-			// we should probably change this so that the door the keycard opens is a variable
-			// assigned to the keycard, not to the player
-			renderer.color = new Color32(17, 161, 54, 255);
-			BoxCollider2D comp = secdoor.GetComponent("BoxCollider2D") as BoxCollider2D;
-			comp.enabled = false;
+			secdoor.gameObject.SetActive (false);
+//			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
+//			SpriteRenderer renderer = (SpriteRenderer)secdoor.GetComponent<Renderer>();
+//			// we should probably change this so that the door the keycard opens is a variable
+//			// assigned to the keycard, not to the player
+//			BoxCollider2D comp = secdoor.GetComponent("BoxCollider2D") as BoxCollider2D;
+//			comp.enabled = false;
+//			renderer.color = new Color32(25, 0, 5, 255);
 		}
 	}
 

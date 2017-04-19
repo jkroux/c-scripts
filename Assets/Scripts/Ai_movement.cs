@@ -16,7 +16,6 @@ public class Ai_movement : MonoBehaviour
 	private Vector2 movement;
 	public float chase;	
 	private bool canSee;
-	private bool caught;
 	LayerMask mask;
 	public float visionAngle;
 	public float stepCount;
@@ -40,7 +39,6 @@ public class Ai_movement : MonoBehaviour
 		canSee = true;
 		timer=0;
 		List<Vector2> angleMeasure =Angle ();
-		caught = false;
 	}
 
 	public void fullChaseMethodForEZUse(){
@@ -52,8 +50,9 @@ public class Ai_movement : MonoBehaviour
 		{
 			SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
 			render2.color = new Color(.5f, .2f, 1f, 1f);
-			caught = true;
-			print("you have been caught");
+			Movement playerMovement = player.GetComponent<Movement>();
+			playerMovement.enabled = false;
+			StartCoroutine(LevelLoad("Caught"));
 		}
 		else
 		{
@@ -68,12 +67,7 @@ public class Ai_movement : MonoBehaviour
 
 	// Update is called once per frame
 	void Update() {
-		if (chase == 1 || chase==3)
-        {
-			
-			//DefaultMovement ();
-        }
-        else
+		if (chase != 1 && chase !=3)
         {
             float offsetX = (transform.position.x - player.transform.position.x);
             float offsetY = (transform.position.y - player.transform.position.y);
@@ -83,7 +77,6 @@ public class Ai_movement : MonoBehaviour
             {
                 SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
                 render2.color = new Color(.5f, .2f, 1f, 1f);
-                caught = true;
 				Movement playerMovement = player.GetComponent<Movement>();
 				playerMovement.enabled = false;
 				StartCoroutine(LevelLoad("Caught"));
@@ -94,33 +87,6 @@ public class Ai_movement : MonoBehaviour
             }
         }
 	}
-
-    void DefaultMovement()
-    {
-        time++;
-        if (time == 0)
-        {
-            movement = new Vector2(1, 0);
-        }
-        else if (time == 120)
-        {
-            movement = new Vector2(0, 1);
-        }
-        else if (time == 240)
-        {
-            movement = new Vector2(-1, 0);
-        }
-        else if (time == 360)
-        {
-            movement = new Vector2(0, -1);
-        }
-        else if (time >= 480)
-        {
-            movement = new Vector2(1, 0);
-            time = 0;
-        }
-        transform.Translate(movement * speed);
-    }
 
 	 public List<Vector2> Angle(){
 		float stepAngleSize = visionAngle / stepCount;
@@ -175,10 +141,6 @@ public class Ai_movement : MonoBehaviour
 			print("hello I am no longer accelerating");
 			transform.Translate (unitVector * -chasingSpeed);
 		}
-	}
-
-	public bool getCaught(){
-		return (caught);
 	}
 
 	IEnumerator LevelLoad(string name){

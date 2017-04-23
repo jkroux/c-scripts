@@ -96,6 +96,11 @@ public class Movement : MonoBehaviour {
 	public void setPlaySound(bool value){
 		playSound = value;
 	}
+	public int getArtCollected(){
+		return artCollected;
+	}
+
+
 
 //	IEnumerator wait(){
 //		yield return new WaitForSeconds (2f);

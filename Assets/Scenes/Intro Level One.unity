@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1739,6 +1739,7 @@ GameObject:
   - component: {fileID: 2015156823}
   - component: {fileID: 2015156825}
   - component: {fileID: 2015156824}
+  - component: {fileID: 2015156826}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Pickup
@@ -1811,6 +1812,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &2015156826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2015156822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 1696380033}
 --- !u!1 &2114848462
 GameObject:
   m_ObjectHideFlags: 0

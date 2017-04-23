@@ -7,9 +7,11 @@ public class SoundManagement : MonoBehaviour {
 	public AudioClip clip;
 	public GameObject player;
 	private Movement cardValueScript;
+	private int artCollected; 
 	private float volume;
 	// Use this for initialization
 	void Start () {
+		artCollected = 0;
 		source  = GetComponent<AudioSource>();
 		volume = 1.0f;
 		cardValueScript= (Movement)player.GetComponent<Movement>();
@@ -21,6 +23,10 @@ public class SoundManagement : MonoBehaviour {
 		if (cardValueScript.getPlaySound()){
 			source.PlayOneShot(clip,volume);
 			cardValueScript.setPlaySound (false);
+		}
+		if (artCollected<cardValueScript.getArtCollected()){
+			source.PlayOneShot (clip, volume);
+			artCollected++;
 		}
 	}
 }

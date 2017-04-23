@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1292,6 +1292,42 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6877e5cf6e00f4c43ac769b34ca69f0f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &789129192 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1381328062893748, guid: 6877e5cf6e00f4c43ac769b34ca69f0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 789129191}
+--- !u!1 &789129193 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1412517887612540, guid: 6877e5cf6e00f4c43ac769b34ca69f0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 789129191}
+--- !u!114 &789129194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 789129192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 2057499421}
+--- !u!114 &789129195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 789129193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 2057499421}
 --- !u!1 &791957329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1549,7 @@ GameObject:
   - component: {fileID: 1019631266}
   - component: {fileID: 1019631268}
   - component: {fileID: 1019631267}
+  - component: {fileID: 1019631269}
   m_Layer: 0
   m_Name: Pickup (3)
   m_TagString: Pickup
@@ -1585,6 +1622,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1019631269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1019631265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 2057499421}
 --- !u!1 &1065500337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2966,7 @@ GameObject:
   - component: {fileID: 2060911129}
   - component: {fileID: 2060911131}
   - component: {fileID: 2060911130}
+  - component: {fileID: 2060911132}
   m_Layer: 0
   m_Name: Pickup (2)
   m_TagString: Pickup
@@ -2988,6 +3039,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &2060911132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060911128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 2057499421}
 --- !u!1 &2147029629
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1632,6 +1632,7 @@ GameObject:
   - component: {fileID: 1005226009}
   - component: {fileID: 1005226008}
   - component: {fileID: 1005226007}
+  - component: {fileID: 1005226010}
   m_Layer: 0
   m_Name: KeyCard
   m_TagString: KeyCard
@@ -1704,6 +1705,19 @@ Transform:
   m_Father: {fileID: 1073165846}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005226010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1005226006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc86db0a7d5ec4d8b9427548221b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  player: {fileID: 1182941497}
 --- !u!1001 &1041932331
 Prefab:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour {
     public float speed;
     public int artInRoom;
     private int artCollected;
-	static public bool cardObtained;
+	private bool playSound;
 	public GameObject door;
 	public GameObject secdoor;
 //	public GameObject Guard;
@@ -19,8 +19,8 @@ public class Movement : MonoBehaviour {
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
         artCollected = 0;
-		cardObtained=false;
-		print ("press E to pick up objects");
+		playSound=false;
+
 	}
 		
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -58,9 +58,12 @@ public class Movement : MonoBehaviour {
 		}
 		if (other.gameObject.CompareTag("KeyCard"))
 		{
-			cardObtained = true; //this line, and even this variable, seems redundant
 			print("card obtained");
-			other.gameObject.SetActive(false);
+			playSound = true;
+			PolygonCollider2D offSwitch = (PolygonCollider2D) other.gameObject.GetComponent<Collider2D> ();
+			SpriteRenderer spriteOffSwitch = (SpriteRenderer)other.gameObject.GetComponent<Renderer> ();
+			Destroy (offSwitch);
+			Destroy (spriteOffSwitch);
 			secdoor.gameObject.SetActive (false);
 //			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
 //			SpriteRenderer renderer = (SpriteRenderer)secdoor.GetComponent<Renderer>();
@@ -74,6 +77,12 @@ public class Movement : MonoBehaviour {
 
 	void transitionMenu(){
 		SceneManager.LoadScene ("Transition");
+	}
+	public bool getPlaySound(){
+		return playSound;
+	}
+	public void setPlaySound(bool value){
+		playSound = value;
 	}
 
 //	IEnumerator wait(){

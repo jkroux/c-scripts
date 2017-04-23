@@ -25,7 +25,7 @@ public class SoundManagement : MonoBehaviour {
 			cardValueScript.setPlaySound (false);
 		}
 		if (artCollected<cardValueScript.getArtCollected()){
-			source.PlayOneShot (clip, volume);
+			source.PlayOneShot (clip, volume);	
 			artCollected++;
 		}
 	}

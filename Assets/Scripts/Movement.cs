@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour {
 	public GameObject door;
 	public GameObject secdoor; 
-//	public GameObject UIManager;
 	public float playerSpeed;
     public int numOfArt;
 

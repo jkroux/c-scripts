@@ -11,24 +11,17 @@ public class UIManager : MonoBehaviour {
 
 	void Start () {
 		previousScene = PlayerPrefs.GetInt( "previousScene" );
-//		previousScene = SceneManager.GetSceneAt(previousSceneInt).name();
 		nextScene = previousScene + 1;
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		hidePaused();
 	}
 
+	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.P))
 		{
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0){
-				Time.timeScale = 1;
-				hidePaused();
-			}
+			pauseControl ();
 		}
 	}
 
@@ -39,6 +32,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	//Play Button's method
+	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	public void pauseControl(){
 		if(Time.timeScale == 1)
 		{
@@ -51,6 +45,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	//show all ShowOnPause objects
+	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	public void showPaused(){
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
@@ -58,25 +53,38 @@ public class UIManager : MonoBehaviour {
 	}
 
 	//hides those objects
+	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	public void hidePaused(){
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
 		}
 	}
 
-//	//Homepage Button's method
-//	public void LoadLevel(string level){
-//		SceneManager.LoadScene(level);
-//	}
-
 	//function to be called to go to another scene
 	public void LoadScene(string name){
 		StartCoroutine(LevelLoad(name));
 	} 
+		
+	//Quit the game
+	public void quit(){
+		Application.Quit ();
+		Debug.Log("Game is exiting");
+	}
+
+	//replay the previous scene
+	public void replay(){
+		StartCoroutine(LevelLoad(previousScene));
+	}
+
+	//go to next game level
+	public void nextLevel(){
+		StartCoroutine(LevelLoad(nextScene));
+	}
+
 
 	//load level by name after one sceond delay
 	IEnumerator LevelLoad(string name){
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(1.0f);
 		SceneManager.LoadScene(name);
 	}
 
@@ -87,17 +95,4 @@ public class UIManager : MonoBehaviour {
 	}
 
 
-	//Quit the game
-	public void quit(){
-		Application.Quit ();
-		Debug.Log("Game is exiting");
-	}
-
-	public void replay(){
-		StartCoroutine(LevelLoad(previousScene));
-	}
-
-	public void nextLevel(){
-		StartCoroutine(LevelLoad(nextScene));
-	}
 }

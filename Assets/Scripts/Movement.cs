@@ -4,58 +4,72 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
+
     public float speed;
     public int artInRoom;
+    private bool playSound;
+    public GameObject door;
+    public GameObject secdoor; 
+    public float playerSpeed;
+    public int numOfArt;
+
     private int artCollected;
-	private bool playSound;
-	public GameObject door;
-	public GameObject secdoor;
-//	public GameObject Guard;
 
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt("previousScene", Application.loadedLevel);
+		PlayerPrefs.SetInt("previousScene", Application.loadedLevel); //find the index of current scene
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
-        artCollected = 0;
+       		artCollected = 0;
 		playSound=false;
 
 	}
 		
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate () {
-//		Ai_movement guardMovement = Guard.GetComponent<Ai_movement>();
-//		bool caught = guardMovement.getCaught();
-//		if (!caught) {
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
-			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-			transform.Translate (movement * speed);
-//		} 
+		PlayerMovement ();
     }
+
+	//Player's movement controlled by user.
+	void PlayerMovement(){
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+		transform.Translate (movement * playerSpeed);
+	}
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
 	void OnTriggerStay2D(Collider2D other)
 	{
-		//Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
 		if (other.gameObject.CompareTag("Pickup"))
 		{
 			other.gameObject.SetActive(false);
 			artCollected++;
-			if (artCollected == artInRoom) {
+			if (artCollected == numOfArt) {
 				SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
 				renderer.color = new Color32(0,200, 0, 255);
 			}
 		}
+
 		if (other.gameObject.CompareTag("Door"))
 		{
-			if (artCollected == artInRoom) {
-				gameObject.SetActive (false);
-				//StartCoroutine(wait());
-				Invoke("transitionMenu",1);
+			if (artCollected == numOfArt) {
+				Movement playerMovement = gameObject.GetComponent<Movement> ();
+				playerMovement.enabled = false;
+
+				GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
+				foreach(GameObject g in guards){
+					Ai_movement guardMovement1 = g.GetComponent<Ai_movement> ();
+					guardMovement1.enabled = false;
+					GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
+					guardMovement2.enabled = false;
+				}
+
+				StartCoroutine(changeToTransition());
 			}
 		}
+
 		if (other.gameObject.CompareTag("KeyCard"))
 		{
 			print("card obtained");
@@ -65,19 +79,16 @@ public class Movement : MonoBehaviour {
 			Destroy (offSwitch);
 			Destroy (spriteOffSwitch);
 			secdoor.gameObject.SetActive (false);
-//			// code taken in part from unity 3d https://forum.unity3d.com/threads/how-do-you-change-a-color-in-spriterenderer.211003/
-//			SpriteRenderer renderer = (SpriteRenderer)secdoor.GetComponent<Renderer>();
-//			// we should probably change this so that the door the keycard opens is a variable
-//			// assigned to the keycard, not to the player
-//			BoxCollider2D comp = secdoor.GetComponent("BoxCollider2D") as BoxCollider2D;
-//			comp.enabled = false;
-//			renderer.color = new Color32(25, 0, 5, 255);
 		}
 	}
 
-	void transitionMenu(){
+	IEnumerator changeToTransition(){
+		yield return new WaitForSeconds (1.0f);
+		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene ("Transition");
 	}
+
 	public bool getPlaySound(){
 		return playSound;
 	}
@@ -89,4 +100,5 @@ public class Movement : MonoBehaviour {
 //		yield return new WaitForSeconds (2f);
 //		SceneManager.LoadScene ("Transition");
 //	}
+
 }

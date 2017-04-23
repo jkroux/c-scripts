@@ -36,7 +36,7 @@ public class GeneralizedMovement : MonoBehaviour {
 		if (guardMovement.chase == false) { 
 			DefaultMovement ();
 		} else { 
-			guardMovement.fullChaseMethodForEZUse();
+			guardMovement.ChasingMovement();
 		}
 	}
 

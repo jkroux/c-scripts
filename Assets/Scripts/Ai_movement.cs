@@ -30,28 +30,9 @@ public class Ai_movement : MonoBehaviour
 		chase = false;
 		timer=0;
 	}
+		
 
-	//See whether the guard catch the player
-	public void fullChaseMethodForEZUse(){
-		float offsetX = (transform.position.x - player.transform.position.x);
-		float offsetY = (transform.position.y - player.transform.position.y);
-		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
-
-		if (distance < 0.5)
-		{
-			SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
-			render2.color = new Color(.5f, .2f, 1f, 1f);
-			Movement playerMovement = player.GetComponent<Movement>();
-			playerMovement.enabled = false;
-			StartCoroutine(ChangeToCaught());
-		}
-		else
-		{
-				ChasePlayer(offsetX, offsetY, distance); 
-		}
-	}
-
-	//chase mode changes
+	//track chasing mode
 	void FixedUpdate(){
 		List<Vector2> dirVector = Angle ();
 		for (int i = 0; i < dirVector.Count; i++) {
@@ -82,6 +63,28 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 
+
+	//See whether the guard catch the player
+	public void ChasingMovement(){
+		float offsetX = (transform.position.x - player.transform.position.x);
+		float offsetY = (transform.position.y - player.transform.position.y);
+		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
+
+		if (distance < 0.5)
+		{
+			SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
+			render2.color = new Color(.5f, .2f, 1f, 1f);
+			Movement playerMovement = player.GetComponent<Movement>();
+			playerMovement.enabled = false;
+			StartCoroutine(ChangeToCaught());
+		}
+		else
+		{
+			ChasePlayer(offsetX, offsetY, distance); 
+		}
+	}
+
+
 	//the angle that the guard can see
 	public List<Vector2> Angle(){
 		float stepAngleSize = visionAngle / stepCount;
@@ -93,6 +96,7 @@ public class Ai_movement : MonoBehaviour
 		}
 		return viewPoint;
 	}
+
 
 	//guard's movement when it starts to change the player
 	void ChasePlayer(float x, float y, float d) {
@@ -109,6 +113,7 @@ public class Ai_movement : MonoBehaviour
 			transform.Translate (unitVector * -chasingSpeed);
 		}
 	}
+
 
 	//load Caught scene
 	IEnumerator ChangeToCaught(){

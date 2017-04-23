@@ -740,6 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 776491327}
   - component: {fileID: 776491326}
+  - component: {fileID: 776491328}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -758,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 270670735}
 --- !u!4 &776491327
 Transform:
   m_ObjectHideFlags: 0
@@ -772,6 +773,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776491328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776491325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c6d7638c93b4ffeb2575105f32d5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  black: {fileID: 2800000, guid: ad6b9a8bfe43143e7a7a458ea733f8a8, type: 3}
+  fadeSpeed: 1
 --- !u!1 &834479194 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1651102174515878, guid: 6877e5cf6e00f4c43ac769b34ca69f0f,
@@ -2224,6 +2238,16 @@ Prefab:
       propertyPath: door
       value: 
       objectReference: {fileID: 834479194}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: playerSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: numOfArt
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}

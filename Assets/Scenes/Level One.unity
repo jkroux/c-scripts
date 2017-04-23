@@ -2391,6 +2391,16 @@ Prefab:
       propertyPath: Guard2
       value: 
       objectReference: {fileID: 1081155795}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: playerSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: numOfArt
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_IsPrefabParent: 0
@@ -2844,6 +2854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113227104}
   - component: {fileID: 2113227103}
+  - component: {fileID: 2113227105}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2862,7 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 270670735}
 --- !u!4 &2113227104
 Transform:
   m_ObjectHideFlags: 0
@@ -2876,3 +2887,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113227105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113227102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c6d7638c93b4ffeb2575105f32d5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  black: {fileID: 2800000, guid: ad6b9a8bfe43143e7a7a458ea733f8a8, type: 3}
+  fadeSpeed: 1

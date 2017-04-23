@@ -54,7 +54,9 @@ public class Movement : MonoBehaviour {
 
 				GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
 				foreach(GameObject g in guards){
-					Ai_movement guardMovement2 = g.GetComponent<Ai_movement> ();
+					Ai_movement guardMovement1 = g.GetComponent<Ai_movement> ();
+					guardMovement1.enabled = false;
+					GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
 					guardMovement2.enabled = false;
 				}
 

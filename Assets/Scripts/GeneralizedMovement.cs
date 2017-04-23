@@ -5,8 +5,7 @@ using System;
 
 public class GeneralizedMovement : MonoBehaviour {
 	
-	public float speed = 1;
-	public Vector2 movement;
+	public float regularSpeed = 0.05f;
 	public Transform Pos1;
 	public Transform Pos2;
 	public Transform Pos3;
@@ -14,56 +13,62 @@ public class GeneralizedMovement : MonoBehaviour {
 	public Transform Pos5;
 	public Transform Pos6;
 	public Transform Pos7;
-	private Transform work;
-	private ArrayList list = new ArrayList();
-	private int indexforMovement = 0;
 	public int numOfPatrolPoints;
+
+	private Transform currentPatrolPoint;
+	private ArrayList patrolPointsList = new ArrayList();
+	private int indexforPoints = 0;
+
 
 	// Use this for initialization
 	void Start () {
-		//is there a way of creating list with Pos1-7 already in it rather than adding them separately?
-		list.Add (Pos1);
-		list.Add (Pos2);
-		list.Add (Pos3);
-		list.Add (Pos4);
-		list.Add (Pos5);
-		list.Add (Pos6);
-		list.Add (Pos7);
+		patrolPointsList.Add (Pos1);
+		patrolPointsList.Add (Pos2);
+		patrolPointsList.Add (Pos3);
+		patrolPointsList.Add (Pos4);
+		patrolPointsList.Add (Pos5);
+		patrolPointsList.Add (Pos6);
+		patrolPointsList.Add (Pos7);
 	}
-	
-	// Changed this from update to FixedUpdate so we won't have to worry about framerate
+
 	void FixedUpdate () {
-		work = (Transform) list[indexforMovement]; //why are we casting something that's already a transform?
-		Ai_movement script = gameObject.GetComponent<Ai_movement>();
-		float offsetX = (transform.position.x - work.position.x);
-		float offsetY = (transform.position.y - work.position.y);
+		currentPatrolPoint = (Transform) patrolPointsList[indexforPoints]; 
+		Ai_movement guardMovement = gameObject.GetComponent<Ai_movement>();
+		float offsetX = (transform.position.x - currentPatrolPoint.position.x);
+		float offsetY = (transform.position.y - currentPatrolPoint.position.y);
 		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
-		print(script.chase);
-		if (script.chase == 1) {
-			ModableMovement (offsetX, offsetY, distance);
-		} else if (script.chase !=3){
-			script.fullChaseMethodForEZUse();
+
+//		print(script.chase);
+		if (guardMovement.chase == 1) { //guard does not chase the player --need to be changed
+			DefaultMovement (offsetX, offsetY, distance);
+		} else if (guardMovement.chase !=3){
+			guardMovement.fullChaseMethodForEZUse();
 		}
 	}
 
-	bool RangeCheck(float x, float compareX) {
-		if ((compareX - .5) < x && x < (compareX + .5)) {
+	//See if the guard get to the current patrolPoint
+	bool Arrive(float x, float pointX) {
+		if ((pointX - .5) < x && x < (pointX + .5)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	void ModableMovement(float x, float y, float d) {
+	//Guard follows the path to the current patrolPoint
+	void DefaultMovement(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x / d, y / d);
-		transform.Translate(unitVector * -speed);
-		if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y)  &&  indexforMovement <= (numOfPatrolPoints-1)) {
-			print ("here");
-			indexforMovement++;
-		} 
-		else if (RangeCheck(transform.position.x,work.position.x) && RangeCheck(transform.position.y,work.position.y) && indexforMovement > (numOfPatrolPoints-1)){
-			indexforMovement = 0;
+		transform.Translate(unitVector * -regularSpeed);
+
+		bool arriveX = Arrive(transform.position.x, currentPatrolPoint.position.x);
+		bool arriveY = Arrive (transform.position.y, currentPatrolPoint.position.y);
+		if (arriveX && arriveY) {
+			if (indexforPoints <= (numOfPatrolPoints-1)) {
+				indexforPoints++;
+			} 
+			else {indexforPoints = 0;}
 		}
 	}
+
 
 }

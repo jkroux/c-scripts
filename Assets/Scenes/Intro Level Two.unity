@@ -496,6 +496,16 @@ Prefab:
       propertyPath: Pos3
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114358530412019448, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: regularSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: speed
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}
   m_IsPrefabParent: 0

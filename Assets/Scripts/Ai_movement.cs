@@ -12,12 +12,11 @@ public class Ai_movement : MonoBehaviour
 	public float visionAngle;
 	public float stepCount;
 	public int pauseTime=9;
-	public float chase;	  //when chase=-1, guard does not chase player; =1, chasing player; =0, guard lose the player and pause
+	public bool chase;	  
 
 	private int timer; //time that player is out of vision cone
 	private float accel = 0;	
 	private Color originalGaurd;
-	private float toggle =0; //????? what does toggle do?
 	private LayerMask mask;	
 	private float hasPaused=0;
 
@@ -28,16 +27,11 @@ public class Ai_movement : MonoBehaviour
 		originalGaurd = gaurdchange.color;
 		mask = 1 << 2; 
 		mask = ~mask;
-		chase = -1;
+		chase = false;
 		timer=0;
 	}
 
-	// Update is called once per frame
-	void Update() {
-		if (chase = 1){fullChaseMethodForEZUse ();}
-	}
-
-	//???? distance between guard and player
+	//See whether the guard catch the player
 	public void fullChaseMethodForEZUse(){
 		float offsetX = (transform.position.x - player.transform.position.x);
 		float offsetY = (transform.position.y - player.transform.position.y);
@@ -52,18 +46,44 @@ public class Ai_movement : MonoBehaviour
 			StartCoroutine(ChangeToCaught());
 		}
 		else
-		{ //??toggle?
-			toggle++;
-			if (toggle >= 5){
-				SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
-				gaurdchange.color = new Color (.8F, .3F, .4F);
+		{
 				ChasePlayer(offsetX, offsetY, distance); 
+		}
+	}
+
+	//chase mode changes
+	void FixedUpdate(){
+		List<Vector2> dirVector = Angle ();
+		for (int i = 0; i < dirVector.Count; i++) {
+			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector [i], 2, mask);
+			if (hit.collider != null) {
+				if (hit.collider.tag == "Player") {
+					chase = true;
+					timer = 0;
+				} 
+			}
+			if (hit.collider == null || hit.collider.tag != "Player") {
+				if (chase == true) { 
+					timer++; 
+					if (timer >= 900 * 15) {
+						transform.Translate (Vector2.zero);
+						if (hasPaused < pauseTime * 1500) {
+							hasPaused++;
+						} else {
+							SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer> ();
+							chase = false;
+							hasPaused = 0;
+							gaurdchange.color = originalGaurd;
+							accel = 0;
+						}
+					}
+				}
 			}
 		}
 	}
-		
+
 	//the angle that the guard can see
-	 public List<Vector2> Angle(){
+	public List<Vector2> Angle(){
 		float stepAngleSize = visionAngle / stepCount;
 		List<Vector2> viewPoint = new List<Vector2> ();
 		for (int i=0; i<= stepCount; i++){
@@ -74,48 +94,18 @@ public class Ai_movement : MonoBehaviour
 		return viewPoint;
 	}
 
-	//chase mode changes
-	void FixedUpdate(){
-		List<Vector2> dirVector = Angle ();
-		for (int i = 0; i < dirVector.Count; i++) {
-			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector [i], 2, mask);
-			if (hit.collider != null) {
-				if (hit.collider.tag == "Player") {
-					chase = 1;
-					timer = 0;
-				} 
-			}
-			if (hit.collider==null || hit.collider.tag != "Player") {
-					timer++; 
-				if (timer >= 900 * 15 && chase == 1) {
-					chase = 0;
-					transform.Translate (Vector2.zero);
-					if (hasPaused < pauseTime*1500) {
-						hasPaused++;
-					} 
-					else {
-						SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
-						chase = -1;
-						hasPaused = 0;
-						gaurdchange.color = originalGaurd;
-						accel = 0;
-			}
-				}
-			}
-		}
-	}
-
 	//guard's movement when it starts to change the player
 	void ChasePlayer(float x, float y, float d) {
+		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+		gaurdchange.color = new Color (.8F, .3F, .4F);
+
 		Vector2 unitVector = new Vector2 (x/d, y/d);
 		if (accel <1) {
-			print ("I am accelerating");
 			transform.Translate (unitVector * (-chasingSpeed*accel));
 			accel = accel + 0.01f; 
 		}
 
 		else{
-			print("hello I am no longer accelerating");
 			transform.Translate (unitVector * -chasingSpeed);
 		}
 	}

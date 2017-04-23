@@ -6,41 +6,38 @@ using UnityEngine.SceneManagement;
 //http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 //box collider resizing.
 public class Ai_movement : MonoBehaviour
-{
-	public int time = 0;
-	private float toggle =0;
-	public float speed = 1;
-	public float chasingSpeed = 1;
-	public GameObject player;
-	public float accel = 1;
-	private Vector2 movement;
-	public float chase;	
-	private bool canSee;
-	LayerMask mask;
+{   public GameObject player;
+	public float regularSpeed = 0.05f;
+	public float chasingSpeed = 0.05f;
 	public float visionAngle;
 	public float stepCount;
-	private int timer;
-	public float counterofAccel=1;
-	private float accelHold;
-	private float timer2=0;
+	public int pauseTime=9;
+	public float chase;	  //when chase=1, guard does not chase player; =2, chasing player; =3, guard lose the player and pause
+
+	private int timer; //time that player is out of vision cone
+	private float accel = 0;	
 	private Color originalGaurd;
-	public int waitForIt=9;
+	private float toggle =0; //????? what does toggle do?
+	private LayerMask mask;	
+	private float hasPaused=0;
 
 	// Use this for initialization
 	void Start()
 	{
 		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 		originalGaurd = gaurdchange.color;
-		accelHold = accel;
-		mask = 1 << 2;
+		mask = 1 << 2; 
 		mask = ~mask;
-		movement = new Vector2(1, 0);
 		chase = 1;
-		canSee = true;
 		timer=0;
-		List<Vector2> angleMeasure =Angle ();
 	}
 
+	// Update is called once per frame
+	void Update() {
+		if (chase != 1 && chase !=3){fullChaseMethodForEZUse ();}
+	}
+
+	//???? distance between guard and player
 	public void fullChaseMethodForEZUse(){
 		float offsetX = (transform.position.x - player.transform.position.x);
 		float offsetY = (transform.position.y - player.transform.position.y);
@@ -52,42 +49,20 @@ public class Ai_movement : MonoBehaviour
 			render2.color = new Color(.5f, .2f, 1f, 1f);
 			Movement playerMovement = player.GetComponent<Movement>();
 			playerMovement.enabled = false;
-			StartCoroutine(LevelLoad("Caught"));
+			StartCoroutine(ChangeToCaught());
 		}
 		else
-		{
+		{ //??toggle?
 			toggle++;
 			if (toggle >= 5){
 				SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 				gaurdchange.color = new Color (.8F, .3F, .4F);
-				ChasePlayer(offsetX, offsetY, distance);
+				ChasePlayer(offsetX, offsetY, distance); 
+			}
 		}
 	}
-	}
-
-	// Update is called once per frame
-	void Update() {
-		if (chase != 1 && chase !=3)
-        {
-            float offsetX = (transform.position.x - player.transform.position.x);
-            float offsetY = (transform.position.y - player.transform.position.y);
-            float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
-
-            if (distance < 0.5)
-            {
-                SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
-                render2.color = new Color(.5f, .2f, 1f, 1f);
-				Movement playerMovement = player.GetComponent<Movement>();
-				playerMovement.enabled = false;
-				StartCoroutine(LevelLoad("Caught"));
-            }
-            else
-            {
-                ChasePlayer(offsetX, offsetY, distance);
-            }
-        }
-	}
-
+		
+	//the angle that the guard can see
 	 public List<Vector2> Angle(){
 		float stepAngleSize = visionAngle / stepCount;
 		List<Vector2> viewPoint = new List<Vector2> ();
@@ -99,6 +74,7 @@ public class Ai_movement : MonoBehaviour
 		return viewPoint;
 	}
 
+	//change mode changes
 	void FixedUpdate(){
 		List<Vector2> dirVector = Angle ();
 		for (int i = 0; i < dirVector.Count; i++) {
@@ -110,31 +86,32 @@ public class Ai_movement : MonoBehaviour
 				} 
 			}
 			if (hit.collider==null || hit.collider.tag != "Player") {
-					timer++;
-				if (timer >= 900 * 15 && chase!=1) {
+					timer++; 
+				if (timer >= 900 * 15 && chase!=1) { //chase =2
 					chase = 3;
 					transform.Translate (Vector2.zero);
-					if (timer2 < waitForIt*1500) {
-						timer2++;
+					if (hasPaused < pauseTime*1500) {
+						hasPaused++;
 					} 
 					else {
 						SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 						chase = 1;
-						timer2 = 0;
+						hasPaused = 0;
 						gaurdchange.color = originalGaurd;
-						accel = accelHold;
+						accel = 0;
 			}
 				}
 			}
 		}
 	}
 
-
+	//guard's movement when it starts to change the player
 	void ChasePlayer(float x, float y, float d) {
 		Vector2 unitVector = new Vector2 (x/d, y/d);
 		if (accel <1) {
+			print ("I am accelerating");
 			transform.Translate (unitVector * (-chasingSpeed*accel));
-			accel = accel + (counterofAccel/80);
+			accel = accel + 0.01f; 
 		}
 
 		else{
@@ -143,9 +120,12 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 
-	IEnumerator LevelLoad(string name){
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene(name);
+	//load Caught scene
+	IEnumerator ChangeToCaught(){
+		yield return new WaitForSeconds (1.0f);
+		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds (fadeTime);
+		SceneManager.LoadScene ("Caught");
 	}
 
 }

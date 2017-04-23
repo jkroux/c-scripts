@@ -97,9 +97,5 @@ public class VisionConePlayer : MonoBehaviour {
 		viewMeshFilter.mesh = viewMesh;
 		StartCoroutine ("FindTargetsWithDelay", .2);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

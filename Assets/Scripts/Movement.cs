@@ -65,7 +65,8 @@ public class Movement : MonoBehaviour {
 					GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
 					guardMovement2.enabled = false;
 				}
-
+				SpriteRenderer playerSprite = (SpriteRenderer) gameObject.GetComponent<Renderer> ();
+				playerSprite.enabled = false;
 				StartCoroutine(changeToTransition());
 			}
 		}

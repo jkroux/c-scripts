@@ -15,7 +15,6 @@ public class GeneralizedMovement : MonoBehaviour {
 	public Transform Pos7;
 	public int numOfPatrolPoints;
 
-	private Transform currentPatrolPoint;
 	private ArrayList patrolPointsList = new ArrayList();
 	private int indexforPoints = 0;
 
@@ -32,16 +31,11 @@ public class GeneralizedMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		currentPatrolPoint = (Transform) patrolPointsList[indexforPoints]; 
 		Ai_movement guardMovement = gameObject.GetComponent<Ai_movement>();
-		float offsetX = (transform.position.x - currentPatrolPoint.position.x);
-		float offsetY = (transform.position.y - currentPatrolPoint.position.y);
-		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
 
-//		print(script.chase);
-		if (guardMovement.chase == false) { //guard does not chase the player --need to be changed
-			DefaultMovement (offsetX, offsetY, distance);
-		} else if (guardMovement.chase == true){ 
+		if (guardMovement.chase == false) { 
+			DefaultMovement ();
+		} else { 
 			guardMovement.fullChaseMethodForEZUse();
 		}
 	}
@@ -56,8 +50,13 @@ public class GeneralizedMovement : MonoBehaviour {
 	}
 
 	//Guard follows the path to the current patrolPoint
-	void DefaultMovement(float x, float y, float d) {
-		Vector2 unitVector = new Vector2 (x / d, y / d);
+	void DefaultMovement() {	
+		Transform currentPatrolPoint = (Transform) patrolPointsList[indexforPoints]; 
+		float offsetX = (transform.position.x - currentPatrolPoint.position.x);
+		float offsetY = (transform.position.y - currentPatrolPoint.position.y);
+		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
+
+		Vector2 unitVector = new Vector2 (offsetX / distance, offsetY / distance);
 		transform.Translate(unitVector * -regularSpeed);
 
 		bool arriveX = Arrive(transform.position.x, currentPatrolPoint.position.x);

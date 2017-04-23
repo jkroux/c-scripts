@@ -12,7 +12,7 @@ public class Ai_movement : MonoBehaviour
 	public float visionAngle;
 	public float stepCount;
 	public int pauseTime=9;
-	public float chase;	  //when chase=1, guard does not chase player; =2, chasing player; =3, guard lose the player and pause
+	public float chase;	  //when chase=-1, guard does not chase player; =1, chasing player; =0, guard lose the player and pause
 
 	private int timer; //time that player is out of vision cone
 	private float accel = 0;	
@@ -28,13 +28,13 @@ public class Ai_movement : MonoBehaviour
 		originalGaurd = gaurdchange.color;
 		mask = 1 << 2; 
 		mask = ~mask;
-		chase = 1;
+		chase = -1;
 		timer=0;
 	}
 
 	// Update is called once per frame
 	void Update() {
-		if (chase != 1 && chase !=3){fullChaseMethodForEZUse ();}
+		if (chase = 1){fullChaseMethodForEZUse ();}
 	}
 
 	//???? distance between guard and player
@@ -74,28 +74,28 @@ public class Ai_movement : MonoBehaviour
 		return viewPoint;
 	}
 
-	//change mode changes
+	//chase mode changes
 	void FixedUpdate(){
 		List<Vector2> dirVector = Angle ();
 		for (int i = 0; i < dirVector.Count; i++) {
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector [i], 2, mask);
 			if (hit.collider != null) {
 				if (hit.collider.tag == "Player") {
-					chase = 2;
+					chase = 1;
 					timer = 0;
 				} 
 			}
 			if (hit.collider==null || hit.collider.tag != "Player") {
 					timer++; 
-				if (timer >= 900 * 15 && chase!=1) { //chase =2
-					chase = 3;
+				if (timer >= 900 * 15 && chase == 1) {
+					chase = 0;
 					transform.Translate (Vector2.zero);
 					if (hasPaused < pauseTime*1500) {
 						hasPaused++;
 					} 
 					else {
 						SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
-						chase = 1;
+						chase = -1;
 						hasPaused = 0;
 						gaurdchange.color = originalGaurd;
 						accel = 0;

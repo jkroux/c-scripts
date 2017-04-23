@@ -39,9 +39,9 @@ public class GeneralizedMovement : MonoBehaviour {
 		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
 
 //		print(script.chase);
-		if (guardMovement.chase == 1) { //guard does not chase the player --need to be changed
+		if (guardMovement.chase == -1) { //guard does not chase the player --need to be changed
 			DefaultMovement (offsetX, offsetY, distance);
-		} else if (guardMovement.chase !=3){
+		} else if (guardMovement.chase ==1){ 
 			guardMovement.fullChaseMethodForEZUse();
 		}
 	}

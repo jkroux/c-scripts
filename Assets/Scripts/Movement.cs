@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; //do we need this? It doesn't look like we use it
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour {
     public float speed;
     public int artInRoom; //delete this variable; it's not used. it would do the same thing as numOfArt if it were
     private bool playSound;
-    public GameObject door;
     public GameObject secdoor; 
     public float playerSpeed;
     public int numOfArt;
@@ -46,13 +45,9 @@ public class Movement : MonoBehaviour {
 		{
 			other.gameObject.SetActive(false);
 			artCollected++;
-			if (artCollected == numOfArt) {
-				SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
-				renderer.color = new Color32(0, 195, 50, 255);
-			}
 		}
-
-		if (other.gameObject.CompareTag("Door"))
+	
+		else if (other.gameObject.CompareTag("Door"))
 		{
 			if (artCollected == numOfArt) {
 				Movement playerMovement = gameObject.GetComponent<Movement> ();
@@ -71,7 +66,7 @@ public class Movement : MonoBehaviour {
 			}
 		}
 
-		if (other.gameObject.CompareTag("KeyCard"))
+		else if (other.gameObject.CompareTag("KeyCard"))
 		{
 			print("card obtained");
 			playSound = true;
@@ -98,6 +93,10 @@ public class Movement : MonoBehaviour {
 	}
 	public int getArtCollected(){
 		return artCollected;
+	}
+	public int getNumOfArt()
+	{
+		return numOfArt;
 	}
 
 

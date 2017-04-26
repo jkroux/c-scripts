@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -292,8 +292,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: THE YEAR IS 2217. Memes are now historic artifacts, and as the world-famous
-    Meme Thief, it is your job to steal them from the prestigious Meme Museum. Arrow
-    keys or WASD are your equipments. Press P to pause.
+    Meme Thief, it is your job to steal them from the prestigious Meme Museum. The
+    arrow keys or WASD are your equipment. Press P to pause.
 --- !u!222 &326183131
 CanvasRenderer:
   m_ObjectHideFlags: 0

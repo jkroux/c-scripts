@@ -13,7 +13,7 @@ public class Ai_movement : MonoBehaviour
 	public int pauseTime=9;
 
 	private bool chase;	  
-	private int timer; //time that player is out of vision cone
+	private int timeOfOutSight; //time that player is out of vision cone
 	private float accel = 0;	
 	private Color originalGaurd;
 	private LayerMask mask;	
@@ -27,39 +27,48 @@ public class Ai_movement : MonoBehaviour
 		mask = 1 << 2; 
 		mask = ~mask;
 		chase = false;
-		timer=0;
+		timeOfOutSight=0;
 	}
 		
 
 	//track chasing mode
 	void FixedUpdate(){
-		List<Vector2> dirVector = Angle ();
-		for (int i = 0; i < dirVector.Count; i++) {
-			RaycastHit2D hit = Physics2D.Raycast (transform.position, dirVector [i], 2, mask);
-			if (hit.collider != null) {
-				if (hit.collider.tag == "Player") {
-					chase = true;
-					timer = 0;
-				} 
+		foreach (Vector2 sightLine in Angle ()) {
+			RaycastHit2D hit = Physics2D.Raycast (transform.position, sightLine, 2, mask);
+
+			if (hit.collider != null && hit.collider.tag == "Player") {
+				playerInSight ();
+			} else {
+				playerOutOfSight ();
 			}
-			if (hit.collider == null || hit.collider.tag != "Player") {
-				if (chase == true) { 
-					timer++; 
-					if (timer >= 900 * 15) {
-						transform.Translate (Vector2.zero);
-						if (hasPaused < pauseTime * 1500) {
-							hasPaused++;
-						} else {
-							SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer> ();
-							chase = false;
-							hasPaused = 0;
-							gaurdchange.color = originalGaurd;
-							accel = 0;
-						}
-					}
+		}
+	}
+
+	private void playerInSight() {
+		chase = true;
+		timeOfOutSight = 0;
+	}
+
+	private void playerOutOfSight() {
+		if (chase == true) { 
+			timeOfOutSight++; 
+			if (timeOfOutSight >= 900 * 15) {
+				transform.Translate (Vector2.zero);
+				if (hasPaused < pauseTime * 1500) {
+					hasPaused++;
+				} else {
+					stopChasing ();
 				}
 			}
 		}
+	}
+
+	private void stopChasing() {
+		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer> ();
+		gaurdchange.color = originalGaurd;
+		chase = false;
+		hasPaused = 0;
+		accel = 0;
 	}
 
 

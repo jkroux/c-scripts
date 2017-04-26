@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour {
 
     public float speed;
-    public int artInRoom;
+    public int artInRoom; //delete this variable; it's not used. it would do the same thing as numOfArt if it were
     private bool playSound;
     public GameObject door;
     public GameObject secdoor; 
@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour {
 			artCollected++;
 			if (artCollected == numOfArt) {
 				SpriteRenderer renderer = (SpriteRenderer)door.GetComponent<Renderer>();
-				renderer.color = new Color32(0,200, 0, 255);
+				renderer.color = new Color32(0, 195, 50, 255);
 			}
 		}
 

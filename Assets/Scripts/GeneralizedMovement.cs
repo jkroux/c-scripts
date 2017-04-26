@@ -32,11 +32,11 @@ public class GeneralizedMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		Ai_movement guardMovement = gameObject.GetComponent<Ai_movement>();
-
-		if (guardMovement.chase == false) { 
-			DefaultMovement ();
-		} else { 
+		bool chase = guardMovement.GetChase ();
+		if (chase) { 
 			guardMovement.ChasingMovement();
+		} else { 
+			DefaultMovement ();
 		}
 	}
 

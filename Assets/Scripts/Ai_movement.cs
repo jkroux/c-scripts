@@ -7,13 +7,12 @@ using UnityEngine.SceneManagement;
 //box collider resizing.
 public class Ai_movement : MonoBehaviour
 {   public GameObject player;
-	public float regularSpeed = 0.05f;
 	public float chasingSpeed = 0.05f;
 	public float visionAngle;
 	public float stepCount;
 	public int pauseTime=9;
-	public bool chase;	  
 
+	private bool chase;	  
 	private int timer; //time that player is out of vision cone
 	private float accel = 0;	
 	private Color originalGaurd;
@@ -121,6 +120,11 @@ public class Ai_movement : MonoBehaviour
 		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
 		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene ("Caught");
+	}
+
+
+	public bool GetChase(){
+		return chase;
 	}
 
 }

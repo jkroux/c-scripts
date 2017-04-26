@@ -15,6 +15,7 @@ public class Camera_movement : MonoBehaviour {
 		offsetDis = transform.position - player.transform.position;
 	}
 
+
 	// LateUpdate is called after Update each frame
 	void LateUpdate () 
 	{		

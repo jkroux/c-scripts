@@ -13,7 +13,7 @@ public class Fading : MonoBehaviour {
 	private float alpha = 1.0f;  //black starts by being visible
 	private int fadeDir = -1; // -1: the scene fade in
 
-
+	//Fade in/out method
 	void OnGUI(){ //change alpha value
 		alpha += fadeDir*fadeSpeed*Time.deltaTime;
 		alpha = Mathf.Clamp01 (alpha);
@@ -24,11 +24,15 @@ public class Fading : MonoBehaviour {
 		GUI.DrawTexture(new Rect(0,0,Screen.width, Screen.height),black);
 	}
 
+
+	//Deciding fading in or out
 	public float BeginFade (int direction){
 		fadeDir = direction;
 		return (fadeSpeed); //avoid loading the next scene before the current scene fade out
 	}
 
+
+	//This method is called automatically when the scene is loaded
 	void OnLevelFinishedLoading(){
 		alpha = 1;
 		BeginFade (-1);

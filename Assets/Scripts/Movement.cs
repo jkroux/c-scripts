@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
 
-    public float speed;
-    public int artInRoom; //delete this variable; it's not used. it would do the same thing as numOfArt if it were
     private bool playSound;
     public GameObject secdoor; 
     public float playerSpeed;
@@ -25,10 +23,12 @@ public class Movement : MonoBehaviour {
 
 	}
 		
+
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate () {
 		PlayerMovement ();
     }
+
 
 	//Player's movement controlled by user.
 	void PlayerMovement(){
@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		transform.Translate (movement * playerSpeed);
 	}
+
 
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
 	void OnTriggerStay2D(Collider2D other)
@@ -78,6 +79,7 @@ public class Movement : MonoBehaviour {
 		}
 	}
 
+
 	IEnumerator changeToTransition(){
 		yield return new WaitForSeconds (1.0f);
 		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
@@ -85,25 +87,21 @@ public class Movement : MonoBehaviour {
 		SceneManager.LoadScene ("Transition");
 	}
 
+
 	public bool getPlaySound(){
 		return playSound;
 	}
+		
 	public void setPlaySound(bool value){
 		playSound = value;
 	}
+		
 	public int getArtCollected(){
 		return artCollected;
 	}
+
 	public int getNumOfArt()
 	{
 		return numOfArt;
 	}
-
-
-
-//	IEnumerator wait(){
-//		yield return new WaitForSeconds (2f);
-//		SceneManager.LoadScene ("Transition");
-//	}
-
 }

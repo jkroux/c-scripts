@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 	GameObject[] pauseObjects;
-	public GameObject player;
 	private int previousScene;
 	private int nextScene;
 
@@ -16,6 +15,7 @@ public class UIManager : MonoBehaviour {
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		hidePaused();
 	}
+
 
 	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	void Update () {
@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
+
 	//Play Button's method
 	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	public void pauseControl(){
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
+
 	//show all ShowOnPause objects
 	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 	public void showPaused(){
@@ -51,6 +53,7 @@ public class UIManager : MonoBehaviour {
 			g.SetActive(true);
 		}
 	}
+
 
 	//hides those objects
 	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
@@ -60,21 +63,25 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
+
 	//function to be called to go to another scene
 	public void LoadScene(string name){
 		StartCoroutine(LevelLoad(name));
 	} 
 		
+
 	//Quit the game
 	public void quit(){
 		Application.Quit ();
 		Debug.Log("Game is exiting");
 	}
 
+
 	//replay the previous scene
 	public void replay(){
 		StartCoroutine(LevelLoad(previousScene));
 	}
+
 
 	//go to next game level
 	public void nextLevel(){
@@ -88,11 +95,10 @@ public class UIManager : MonoBehaviour {
 		SceneManager.LoadScene(name);
 	}
 
+
 	//load level by index after one sceond delay
 	IEnumerator LevelLoad(int index){
 		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene(index);
 	}
-
-
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 // movement to player solved using unity tutorial
 //http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
-//box collider resizing.
+
 public class Ai_movement : MonoBehaviour
 {   public GameObject player;
 	public float chasingSpeed = 0.05f;
@@ -33,7 +33,7 @@ public class Ai_movement : MonoBehaviour
 
 	//track chasing mode
 	void FixedUpdate(){
-		foreach (Vector2 sightLine in Angle ()) {
+		foreach (Vector2 sightLine in Sightlines ()) {
 			RaycastHit2D hit = Physics2D.Raycast (transform.position, sightLine, 2, mask);
 
 			if (hit.collider != null && hit.collider.tag == "Player") {
@@ -43,6 +43,20 @@ public class Ai_movement : MonoBehaviour
 			}
 		}
 	}
+
+
+	//the angle that the guard can see
+	private List<Vector2> Sightlines(){
+		float stepAngleSize = visionAngle / stepCount;
+		List<Vector2> viewPoint = new List<Vector2> ();
+		for (int i=0; i<= stepCount; i++){
+			float angle = transform.eulerAngles.y - visionAngle / 2 + stepAngleSize*i;
+			Vector2 vAnglev = new Vector2 (Mathf.Sin (angle * Mathf.Deg2Rad) ,(Mathf.Cos (angle * Mathf.Deg2Rad)));
+			viewPoint.Add (vAnglev);	
+		}
+		return viewPoint;
+	}
+
 
 	private void playerInSight() {
 		chase = true;
@@ -80,11 +94,7 @@ public class Ai_movement : MonoBehaviour
 
 		if (distance < 0.5)
 		{
-			SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
-			render2.color = new Color(.5f, .2f, 1f, 1f);
-			Movement playerMovement = player.GetComponent<Movement>();
-			playerMovement.enabled = false;
-			StartCoroutine(ChangeToCaught());
+			CatchPlayer();
 		}
 		else
 		{
@@ -92,22 +102,16 @@ public class Ai_movement : MonoBehaviour
 		}
 	}
 
-
-	//the angle that the guard can see
-	public List<Vector2> Angle(){
-		float stepAngleSize = visionAngle / stepCount;
-		List<Vector2> viewPoint = new List<Vector2> ();
-		for (int i=0; i<= stepCount; i++){
-			float angle = transform.eulerAngles.y - visionAngle / 2 + stepAngleSize*i;
-			Vector2 vAnglev = new Vector2 (Mathf.Sin (angle * Mathf.Deg2Rad) ,(Mathf.Cos (angle * Mathf.Deg2Rad)));
-			viewPoint.Add (vAnglev);	
-		}
-		return viewPoint;
+	private void CatchPlayer(){			
+		SpriteRenderer render2 = (SpriteRenderer)player.GetComponent<Renderer>();
+		render2.color = new Color(.5f, .2f, 1f, 1f);
+		Movement playerMovement = player.GetComponent<Movement>();
+		playerMovement.enabled = false;
+		StartCoroutine(ChangeToCaught());
 	}
 
 
-	//guard's movement when it starts to change the player
-	void ChasePlayer(float x, float y, float d) {
+	private void ChasePlayer(float x, float y, float d) {
 		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 		gaurdchange.color = new Color (.8F, .3F, .4F);
 

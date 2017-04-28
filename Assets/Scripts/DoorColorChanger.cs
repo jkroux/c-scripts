@@ -24,8 +24,8 @@ public class DoorColorChanger : MonoBehaviour {
 		int numOfArt = playerScript.getNumOfArt();
 		if (artCollected == numOfArt)
 		{
-			Renderer rend = GetComponent<Renderer>();
-			rend.material.SetColor("_Color", unlockedColor);
+			SpriteRenderer rend = (SpriteRenderer) GetComponent<Renderer>();
+			rend.color = unlockedColor;
 		}
 	}
 }

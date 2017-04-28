@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e80a503a5cc2742be63c4dc81a8aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  unlockedColor: {r: 0, g: 0.7647059, b: 0.19607843, a: 1}
+  player: {fileID: 1201780572627766, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
+  unlockedColor: {r: 0.496, g: 1, b: 0, a: 1}
 --- !u!212 &212735050726372870
 SpriteRenderer:
   m_ObjectHideFlags: 1

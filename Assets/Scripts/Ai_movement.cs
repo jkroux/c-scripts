@@ -91,7 +91,6 @@ public class Ai_movement : MonoBehaviour
 		float offsetX = (transform.position.x - player.transform.position.x);
 		float offsetY = (transform.position.y - player.transform.position.y);
 		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
-
 		if (distance <= 0.5)
 		{
 			CatchPlayer();

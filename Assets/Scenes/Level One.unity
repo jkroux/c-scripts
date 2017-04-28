@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872692, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2260,6 +2260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 270670735}
+  clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
 --- !u!82 &1524029935
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3383,7 +3384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 270670735}
 --- !u!4 &2113227104
 Transform:
   m_ObjectHideFlags: 0

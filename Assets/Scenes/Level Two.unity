@@ -847,7 +847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 270670735}
 --- !u!4 &776491327
 Transform:
   m_ObjectHideFlags: 0
@@ -3587,6 +3586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 270670735}
+  clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
 --- !u!82 &2075230768
 AudioSource:
   m_ObjectHideFlags: 0

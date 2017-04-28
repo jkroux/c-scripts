@@ -6,7 +6,8 @@ public class SoundManagement : MonoBehaviour {
 	
 	public AudioClip clip;
 	public GameObject player;
-
+	public AudioClip clip2;
+	public AudioClip clip3;
 	private AudioSource source;
 	private Movement cardValueScript;
 	private int artCollected; 
@@ -24,12 +25,16 @@ public class SoundManagement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (cardValueScript.getPlaySound()){
-			source.PlayOneShot(clip,volume);
+		if (cardValueScript.getPlaySound ()) {
+			source.PlayOneShot (clip, volume);
 			cardValueScript.setPlaySound (false);
 		}
-		if (artCollected<cardValueScript.getArtCollected()){
-			source.PlayOneShot (clip, volume);	
+		if (artCollected < cardValueScript.getArtCollected ()) {
+			source.PlayOneShot (clip2, volume);	
+			artCollected++;
+		}
+		if (artCollected == cardValueScript.getNumOfArt()) {
+			source.PlayOneShot (clip3, volume);
 			artCollected++;
 		}
 	}

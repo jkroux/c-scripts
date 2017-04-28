@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 2057499421}
+  clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
 --- !u!1 &111496889
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2057499421}
 --- !u!4 &268528785
 Transform:
   m_ObjectHideFlags: 0

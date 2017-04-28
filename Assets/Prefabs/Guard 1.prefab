@@ -92,7 +92,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58546786043672632
 CircleCollider2D:
@@ -119,13 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b7dede34c994197b65de4f773540ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  speed: 0.1
-  chasingSpeed: 0.05
   player: {fileID: 0}
-  chase: 0
+  chasingSpeed: 0.05
   visionAngle: 360
   stepCount: 180
+  pauseTime: 9
 --- !u!114 &114358530412019448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,8 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25850e9787b0364fa2f7f286047ad30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
-  movement: {x: 1, y: 0}
+  regularSpeed: 0.05
   Pos1: {fileID: 0}
   Pos2: {fileID: 0}
   Pos3: {fileID: 0}

@@ -299,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da641fe45ba6b4be19fc92b28f660a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1696380033}
 --- !u!4 &279431266
 Transform:
   m_ObjectHideFlags: 0
@@ -437,6 +436,11 @@ Prefab:
         type: 2}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 50470359458634390, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}
@@ -1760,6 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 1696380033}
+  clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
 --- !u!82 &1750949268
 AudioSource:
   m_ObjectHideFlags: 0

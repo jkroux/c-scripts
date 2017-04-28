@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872692, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -173,6 +173,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: chasingSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}
@@ -2527,6 +2532,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: chasingSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}
   m_IsPrefabParent: 0
@@ -2729,12 +2739,17 @@ Prefab:
     - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
         type: 2}
       propertyPath: playerSpeed
-      value: 0.15
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
         type: 2}
       propertyPath: numOfArt
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464884131882288, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: speed
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
@@ -3043,6 +3058,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: chasingSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}

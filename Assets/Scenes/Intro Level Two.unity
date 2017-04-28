@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872692, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -427,6 +427,16 @@ Prefab:
         type: 2}
       propertyPath: speed
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: chasingSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 58546786043672632, guid: 352e6d80fe8c4a341a19df109a40b4cb,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 352e6d80fe8c4a341a19df109a40b4cb, type: 2}

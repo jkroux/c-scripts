@@ -58,6 +58,8 @@ public class Movement : MonoBehaviour {
 					guardMovement2.enabled = false;
 				}
 
+				Movement playerMovement = gameObject.GetComponent<Movement> ();
+				playerMovement.enabled = false;
 				SpriteRenderer playerSprite = (SpriteRenderer) gameObject.GetComponent<Renderer> ();
 				playerSprite.enabled = false;
 				StartCoroutine(changeToTransition());

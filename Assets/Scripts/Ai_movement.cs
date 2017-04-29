@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class Ai_movement : MonoBehaviour
 {   public GameObject player;
-	public float chasingSpeed = 0.05f;
-	public float visionAngle;
-	public float stepCount;
+	public float chasingSpeed = 0.15f;
 	public int pauseTime=9;
 
-	private bool chase;	  
-	private int timeOfOutSight; //time that player is out of vision cone
+	private float visionAngle = 360;
+	private float stepCount = 180;
+	private bool chase = false;	  
+	private int timeOfOutSight = 0;
 	private float accel = 0;	
 	private Color originalGaurd;
 	private LayerMask mask;	
@@ -26,8 +26,6 @@ public class Ai_movement : MonoBehaviour
 		originalGaurd = gaurdchange.color;
 		mask = 1 << 2; 
 		mask = ~mask;
-		chase = false;
-		timeOfOutSight=0;
 	}
 		
 

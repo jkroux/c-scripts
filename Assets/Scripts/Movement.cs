@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
     public float playerSpeed;
     public int numOfArt;
 
-    private int artCollected;
+    private int artCollected = 0;
 	private bool playSound;
 
 	// Use this for initialization
@@ -17,19 +17,17 @@ public class Movement : MonoBehaviour {
 		PlayerPrefs.SetInt("previousScene", Application.loadedLevel); //find the index of current scene
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
-       		artCollected = 0;
 		playSound=false;
 
 	}
 		
 
+
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate () {
 		PlayerMovement ();
     }
-
-
-	//Player's movement controlled by user.
+		
 	void PlayerMovement(){
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
@@ -38,46 +36,56 @@ public class Movement : MonoBehaviour {
 	}
 
 
+
 	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Pickup"))
 		{
-			other.gameObject.SetActive(false);
-			artCollected++;
+			CollidePickUp(other);
 		}
 	
 		else if (other.gameObject.CompareTag("Door"))
 		{
 			if (artCollected == numOfArt) {
-			    GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
-				foreach(GameObject g in guards){
-					Ai_movement guardMovement1 = g.GetComponent<Ai_movement> ();
-					guardMovement1.enabled = false;
-					GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
-					guardMovement2.enabled = false;
-				}
-
-				Movement playerMovement = gameObject.GetComponent<Movement> ();
-				playerMovement.enabled = false;
-				SpriteRenderer playerSprite = (SpriteRenderer) gameObject.GetComponent<Renderer> ();
-				playerSprite.enabled = false;
-				StartCoroutine(changeToTransition());
+				CollideDoor ();
 			}
 		}
 
 		else if (other.gameObject.CompareTag("KeyCard"))
 		{
-			print("card obtained");
-			playSound = true;
-			PolygonCollider2D offSwitch = (PolygonCollider2D) other.gameObject.GetComponent<Collider2D> ();
-			SpriteRenderer spriteOffSwitch = (SpriteRenderer)other.gameObject.GetComponent<Renderer> ();
-			Destroy (offSwitch);
-			Destroy (spriteOffSwitch);
-			secdoor.gameObject.SetActive (false);
+			CollideKeyCard (other);
+
+		}
+	}
+		
+	void CollidePickUp(Collider2D pickUp){
+		pickUp.gameObject.SetActive(false);
+		artCollected++;
+	}
+
+	void CollideDoor(){
+		GuardStop ();
+		PlayerDisappear ();
+		StartCoroutine(changeToTransition());
+	}
+
+	void GuardStop(){
+		GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
+		foreach(GameObject g in guards){
+			Ai_movement guardMovement1 = g.GetComponent<Ai_movement> ();
+			guardMovement1.enabled = false;
+			GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
+			guardMovement2.enabled = false;
 		}
 	}
 
+	void PlayerDisappear(){
+		Movement playerMovement = gameObject.GetComponent<Movement> ();
+		playerMovement.enabled = false;
+		SpriteRenderer playerSprite = (SpriteRenderer) gameObject.GetComponent<Renderer> ();
+		playerSprite.enabled = false;
+	}
 
 	IEnumerator changeToTransition(){
 		yield return new WaitForSeconds (1.0f);
@@ -86,6 +94,15 @@ public class Movement : MonoBehaviour {
 		SceneManager.LoadScene ("Transition");
 	}
 
+	void CollideKeyCard(Collider2D keyCard){
+		print("card obtained");
+		playSound = true;
+		PolygonCollider2D offSwitch = (PolygonCollider2D) keyCard.gameObject.GetComponent<Collider2D> ();
+		SpriteRenderer spriteOffSwitch = (SpriteRenderer)keyCard.gameObject.GetComponent<Renderer> ();
+		Destroy (offSwitch);
+		Destroy (spriteOffSwitch);
+		secdoor.gameObject.SetActive (false);
+	}
 
 
 

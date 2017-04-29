@@ -12,6 +12,7 @@ TagManager:
   - secdoor
   - secdoortrigger
   - ShowOnPause
+  - meme
   layers:
   - Default
   - TransparentFX

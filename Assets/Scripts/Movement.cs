@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt("previousScene", Application.loadedLevel); //find the index of current scene
+		PlayerPrefs.SetInt("previousScene", SceneManager.GetActiveScene().buildIndex); //find the index of current scene
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
 		playSound=false;

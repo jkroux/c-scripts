@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
 
-    private bool playSound;
     public GameObject secdoor; 
     public float playerSpeed;
     public int numOfArt;
 
     private int artCollected;
-
+	private bool playSound;
 
 	// Use this for initialization
 	void Start () {
@@ -51,16 +50,14 @@ public class Movement : MonoBehaviour {
 		else if (other.gameObject.CompareTag("Door"))
 		{
 			if (artCollected == numOfArt) {
-				Movement playerMovement = gameObject.GetComponent<Movement> ();
-				playerMovement.enabled = false;
-
-				GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
+			    GameObject[] guards = GameObject.FindGameObjectsWithTag ("Guard");
 				foreach(GameObject g in guards){
 					Ai_movement guardMovement1 = g.GetComponent<Ai_movement> ();
 					guardMovement1.enabled = false;
 					GeneralizedMovement guardMovement2 = g.GetComponent<GeneralizedMovement> ();
 					guardMovement2.enabled = false;
 				}
+
 				SpriteRenderer playerSprite = (SpriteRenderer) gameObject.GetComponent<Renderer> ();
 				playerSprite.enabled = false;
 				StartCoroutine(changeToTransition());
@@ -86,6 +83,8 @@ public class Movement : MonoBehaviour {
 		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene ("Transition");
 	}
+
+
 
 
 	public bool getPlaySound(){

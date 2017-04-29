@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ Transform:
   m_LocalScale: {x: 0.44, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 670365161}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &207813508
 BoxCollider2D:
@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 0.44, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 670365161}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &320731338
 BoxCollider2D:
@@ -621,7 +621,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1964047742764976, guid: 70c172f55b5328444b6a3ec5de87cf74, type: 2}
       propertyPath: m_Name
-      value: Door (1)
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 4232019431504250, guid: 70c172f55b5328444b6a3ec5de87cf74, type: 2}
       propertyPath: m_LocalScale.x
@@ -672,9 +672,9 @@ Transform:
   - {fileID: 377205193}
   - {fileID: 1467319996}
   - {fileID: 726855842}
-  - {fileID: 821539799}
   - {fileID: 320731337}
   - {fileID: 207813507}
+  - {fileID: 821539799}
   - {fileID: 421863278}
   - {fileID: 1634631460}
   m_Father: {fileID: 0}
@@ -1023,7 +1023,7 @@ Transform:
   m_LocalScale: {x: 0.025, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 670365161}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &821539800
 BoxCollider2D:
@@ -2106,6 +2106,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 1601783166}
   clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
+  clip3: {fileID: 0}
 --- !u!1 &1804189599
 GameObject:
   m_ObjectHideFlags: 0

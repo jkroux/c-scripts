@@ -29,6 +29,7 @@ public class Ai_movement : MonoBehaviour
 	}
 		
 
+
 	//track chasing mode
 	void FixedUpdate(){
 		foreach (Vector2 sightLine in Sightlines ()) {
@@ -41,8 +42,7 @@ public class Ai_movement : MonoBehaviour
 			}
 		}
 	}
-
-
+		
 	//the angle that the guard can see
 	private List<Vector2> Sightlines(){
 		float stepAngleSize = visionAngle / stepCount;
@@ -54,8 +54,7 @@ public class Ai_movement : MonoBehaviour
 		}
 		return viewPoint;
 	}
-
-
+		
 	private void playerInSight() {
 		chase = true;
 		timeOfOutSight = 0;
@@ -84,6 +83,7 @@ public class Ai_movement : MonoBehaviour
 	}
 
 
+
 	//See whether the guard catch the player
 	public void ChasingMovement(){
 		float offsetX = (transform.position.x - player.transform.position.x);
@@ -106,8 +106,7 @@ public class Ai_movement : MonoBehaviour
 		playerMovement.enabled = false;
 		StartCoroutine(ChangeToCaught());
 	}
-
-
+		
 	private void ChasePlayer(float x, float y, float d) {
 		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 		gaurdchange.color = new Color (.8F, .3F, .4F);
@@ -122,15 +121,14 @@ public class Ai_movement : MonoBehaviour
 			transform.Translate (unitVector * -chasingSpeed);
 		}
 	}
-
-
-	//load Caught scene
+		
 	IEnumerator ChangeToCaught(){
 		yield return new WaitForSeconds (1.0f);
 		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
 		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene ("Caught");
 	}
+
 
 
 	public bool GetChase(){

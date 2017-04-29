@@ -19,6 +19,7 @@ public class GeneralizedMovement : MonoBehaviour {
 	private int indexforPoints = 0;
 
 
+
 	// Use this for initialization
 	void Start () {
 		patrolPointsList.Add (Pos1);
@@ -30,6 +31,8 @@ public class GeneralizedMovement : MonoBehaviour {
 		patrolPointsList.Add (Pos7);
 	}
 
+
+
 	void FixedUpdate () {
 		Ai_movement guardMovement = gameObject.GetComponent<Ai_movement>();
 		bool chase = guardMovement.GetChase ();
@@ -37,15 +40,6 @@ public class GeneralizedMovement : MonoBehaviour {
 			guardMovement.ChasingMovement();
 		} else { 
 			DefaultMovement ();
-		}
-	}
-
-	//See if the guard get to the current patrolPoint
-	bool Arrive(float x, float pointX) {
-		if ((pointX - .5) < x && x < (pointX + .5)) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 
@@ -66,6 +60,15 @@ public class GeneralizedMovement : MonoBehaviour {
 				indexforPoints++;
 			} 
 			else {indexforPoints = 0;}
+		}
+	}
+
+	//See if the guard get to the current patrolPoint
+	bool Arrive(float x, float pointX) {
+		if ((pointX - .5) < x && x < (pointX + .5)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 

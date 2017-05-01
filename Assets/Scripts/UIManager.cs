@@ -8,17 +8,18 @@ public class UIManager : MonoBehaviour {
 	private GameObject[] pauseObjects;
 	private int previousScene;
 	private int nextScene;
-	private int TransitionIndex = 5;
-	private int CaughtIndex = 4;
+	private int transitionIndex = 5;
+	private int caughtIndex = 4;
+	private int highestLevel = 12;
 
 	void Start () {
 		int indexOfScene = SceneManager.GetActiveScene ().buildIndex;
 
-		if (indexOfScene == TransitionIndex) {
+		if (indexOfScene == transitionIndex) {
 			DisplayMeme ();
 			previousScene = PlayerPrefs.GetInt ("previousScene");
 			nextScene = previousScene + 1;
-		} else if (indexOfScene == CaughtIndex) {
+		} else if (indexOfScene == caughtIndex) {
 			previousScene = PlayerPrefs.GetInt ("previousScene");
 			nextScene = previousScene + 1;
 		}else {
@@ -102,7 +103,11 @@ public class UIManager : MonoBehaviour {
 
 	//go to next game level
 	public void nextLevel(){
-		StartCoroutine(LevelLoad(nextScene));
+		if (previousScene == highestLevel) {
+			StartCoroutine (LevelLoad ("Win"));
+		} else {
+			StartCoroutine (LevelLoad (nextScene));
+		}
 	}
 
 

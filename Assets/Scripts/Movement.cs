@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic; //do we need this? It doesn't look like we use it
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		PlayerPrefs.SetInt("previousScene", SceneManager.GetActiveScene().buildIndex);
 		Rigidbody2D playerBody = (Rigidbody2D) gameObject.GetComponent<Rigidbody2D> ();
 		playerBody.freezeRotation = true;
 

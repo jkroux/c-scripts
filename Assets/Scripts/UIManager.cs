@@ -9,15 +9,19 @@ public class UIManager : MonoBehaviour {
 	private int previousScene;
 	private int nextScene;
 	private int TransitionIndex = 5;
+	private int CaughtIndex = 4;
 
 	void Start () {
 		int indexOfScene = SceneManager.GetActiveScene ().buildIndex;
 
 		if (indexOfScene == TransitionIndex) {
 			DisplayMeme ();
-			previousScene = PlayerPrefs.GetInt( "previousScene" );
+			previousScene = PlayerPrefs.GetInt ("previousScene");
 			nextScene = previousScene + 1;
-		} else {
+		} else if (indexOfScene == CaughtIndex) {
+			previousScene = PlayerPrefs.GetInt ("previousScene");
+			nextScene = previousScene + 1;
+		}else {
 			Time.timeScale = 1;
 			pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 			hidePaused();

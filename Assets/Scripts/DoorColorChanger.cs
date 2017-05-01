@@ -7,11 +7,11 @@ public class DoorColorChanger : MonoBehaviour {
 	public GameObject player;
 	public Color unlockedColor;
 
-	private Movement playerScript;
+	private PlayerPickups playerScript;
 
 	// Use this for initialization
 	void Start () {
-		playerScript = player.GetComponent<Movement>();
+		playerScript = player.GetComponent<PlayerPickups>();
 	}
 	
 

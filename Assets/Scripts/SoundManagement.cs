@@ -9,7 +9,7 @@ public class SoundManagement : MonoBehaviour {
 	public AudioClip clip2;
 	public AudioClip clip3;
 	private AudioSource source;
-	private Movement cardValueScript;
+	private PlayerPickups cardValueScript;
 	private int artCollected; 
 	private float volume;
 
@@ -19,7 +19,7 @@ public class SoundManagement : MonoBehaviour {
 		artCollected = 0;
 		source  = GetComponent<AudioSource>();
 		volume = 1.0f;
-		cardValueScript= (Movement)player.GetComponent<Movement>();
+		cardValueScript= player.GetComponent<PlayerPickups>();
 			
 	}
 	

@@ -944,10 +944,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1137399042}
   - component: {fileID: 1137399041}
-  - component: {fileID: 1137399040}
   - component: {fileID: 1137399039}
   - component: {fileID: 1137399038}
   - component: {fileID: 1137399037}
+  - component: {fileID: 1137399043}
+  - component: {fileID: 1137399040}
   m_Layer: 2
   m_Name: Guard 1
   m_TagString: Guard
@@ -1015,17 +1016,15 @@ CircleCollider2D:
 --- !u!114 &1137399040
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114065565906507256, guid: 352e6d80fe8c4a341a19df109a40b4cb,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1137399036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b7dede34c994197b65de4f773540ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 1489500c9a9af3e4792f98a11749afa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1696380033}
-  chasingSpeed: 0.15
   pauseTime: 9
 --- !u!212 &1137399041
 SpriteRenderer:
@@ -1072,11 +1071,23 @@ Transform:
   m_GameObject: {fileID: 1137399036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1137399043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137399036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseTime: 9
 --- !u!1 &1138572822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1753,11 @@ Prefab:
       propertyPath: numOfArt
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114818896773347444, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: numOfArt
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
@@ -1824,7 +1840,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 1696380033}
   clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
-  clip3: {fileID: 8300000, guid: 177c3816ccb12104db8d7e55074ada3a, type: 3}
+  clip3: {fileID: 8300000, guid: a284aa8bbea0d7e43adf231079f8f5f0, type: 3}
 --- !u!82 &1750949268
 AudioSource:
   m_ObjectHideFlags: 0

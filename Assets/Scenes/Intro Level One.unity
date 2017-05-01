@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -729,7 +729,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7c6b141770f07d84db481197a6a08d22, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e2d5e08b71b080045b8ca129d9e36c4f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.461
   m_Pitch: 1
@@ -1460,6 +1460,11 @@ Prefab:
       propertyPath: numOfArt
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114818896773347444, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: numOfArt
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
@@ -1542,7 +1547,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
   player: {fileID: 1696380033}
   clip2: {fileID: 8300000, guid: 61a15e7eeacbc7c4db69052b815f0127, type: 3}
-  clip3: {fileID: 8300000, guid: 177c3816ccb12104db8d7e55074ada3a, type: 3}
+  clip3: {fileID: 8300000, guid: a284aa8bbea0d7e43adf231079f8f5f0, type: 3}
 --- !u!82 &1750949268
 AudioSource:
   m_ObjectHideFlags: 0

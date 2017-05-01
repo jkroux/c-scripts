@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50597234575995480}
   - component: {fileID: 58305775097975716}
   - component: {fileID: 114770362862681470}
+  - component: {fileID: 114818896773347444}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -89,10 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96f8c67aa104d4b9d84a4df00842d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  artInRoom: 2
-  door: {fileID: 0}
-  Guard: {fileID: 0}
+  secdoor: {fileID: 0}
+  playerSpeed: 0
+  numOfArt: 0
 --- !u!114 &114770362862681470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,8 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25850e9787b0364fa2f7f286047ad30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  movement: {x: 0, y: 0}
+  regularSpeed: 0.05
   Pos1: {fileID: 0}
   Pos2: {fileID: 0}
   Pos3: {fileID: 0}
@@ -114,6 +113,18 @@ MonoBehaviour:
   Pos6: {fileID: 0}
   Pos7: {fileID: 0}
   numOfPatrolPoints: 0
+--- !u!114 &114818896773347444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201780572627766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f267378cbfe7ae4ca02fd15d9994261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfArt: 0
 --- !u!212 &212150106578862218
 SpriteRenderer:
   m_ObjectHideFlags: 1

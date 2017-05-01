@@ -5,77 +5,37 @@ using UnityEngine.SceneManagement;
 // movement to player solved using unity tutorial
 //http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 
-public class Ai_movement : MonoBehaviour
+public class Ai_Chase : MonoBehaviour
 {   public GameObject player;
-	public float chasingSpeed = 0.15f;
+	private float chasingSpeed = 0.08f;
 	public int pauseTime=9;
-
-	private float visionAngle = 360;
-	private float stepCount = 180;
 	private bool chase = false;	  
-	private int timeOfOutSight = 0;
 	private float accel = 0;	
 	private Color originalGaurd;
-	private LayerMask mask;	
 	private float hasPaused=0;
-
+	private Sight vision;
+	private SpriteRenderer gaurdchange;
 	// Use this for initialization
 	void Start()
 	{
-		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+		vision = gameObject.GetComponent<Sight>();
+		gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
 		originalGaurd = gaurdchange.color;
-		mask = 1 << 2; 
-		mask = ~mask;
 	}
-		
-
 
 	//track chasing mode
 	void FixedUpdate(){
-		foreach (Vector2 sightLine in Sightlines ()) {
-			RaycastHit2D hit = Physics2D.Raycast (transform.position, sightLine, 2, mask);
-
-			if (hit.collider != null && hit.collider.tag == "Player") {
-				playerInSight ();
-			} else {
-				playerOutOfSight ();
-			}
+		if (vision.GetChase ()) {
+			ChasingMovement ();		
+		} 
+		else if (vision.GetChase()==false){
+			stopChasing ();
 		}
 	}
 		
-	//the angle that the guard can see
-	private List<Vector2> Sightlines(){
-		float stepAngleSize = visionAngle / stepCount;
-		List<Vector2> viewPoint = new List<Vector2> ();
-		for (int i=0; i<= stepCount; i++){
-			float angle = transform.eulerAngles.y - visionAngle / 2 + stepAngleSize*i;
-			Vector2 vAnglev = new Vector2 (Mathf.Sin (angle * Mathf.Deg2Rad) ,(Mathf.Cos (angle * Mathf.Deg2Rad)));
-			viewPoint.Add (vAnglev);	
-		}
-		return viewPoint;
-	}
-		
-	private void playerInSight() {
-		chase = true;
-		timeOfOutSight = 0;
-	}
 
-	private void playerOutOfSight() {
-		if (chase == true) { 
-			timeOfOutSight++; 
-			if (timeOfOutSight >= 900 * 15) {
-				transform.Translate (Vector2.zero);
-				if (hasPaused < pauseTime * 1500) {
-					hasPaused++;
-				} else {
-					stopChasing ();
-				}
-			}
-		}
-	}
 
-	private void stopChasing() {
-		SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer> ();
+	private void stopChasing() {	
 		gaurdchange.color = originalGaurd;
 		chase = false;
 		hasPaused = 0;
@@ -89,7 +49,8 @@ public class Ai_movement : MonoBehaviour
 		float offsetX = (transform.position.x - player.transform.position.x);
 		float offsetY = (transform.position.y - player.transform.position.y);
 		float distance = Mathf.Sqrt(Mathf.Pow(offsetX, 2) + Mathf.Pow(offsetY, 2));
-		if (distance <= 0.5)
+
+		if (distance <= 0.56)
 		{
 			CatchPlayer();
 		}
@@ -114,7 +75,7 @@ public class Ai_movement : MonoBehaviour
 		Vector2 unitVector = new Vector2 (x/d, y/d);
 		if (accel <1) {
 			transform.Translate (unitVector * (-chasingSpeed*accel));
-			accel = accel + 0.01f; 
+			accel = accel + 0.005f; 
 		}
 
 		else{
@@ -131,8 +92,5 @@ public class Ai_movement : MonoBehaviour
 
 
 
-	public bool GetChase(){
-		return chase;
-	}
 
 }

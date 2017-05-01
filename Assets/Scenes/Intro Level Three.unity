@@ -1524,6 +1524,11 @@ Prefab:
       propertyPath: numOfArt
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114818896773347444, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
+        type: 2}
+      propertyPath: numOfArt
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}
@@ -1800,15 +1805,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7c6b141770f07d84db481197a6a08d22, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e2d5e08b71b080045b8ca129d9e36c4f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.597
+  m_Volume: 0.314
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 109
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2062,7 +2067,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 632fa842292f382409b96954f7616b17, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e2d5e08b71b080045b8ca129d9e36c4f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.655
   m_Pitch: 1

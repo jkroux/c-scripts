@@ -34,8 +34,9 @@ public class GeneralizedMovement : MonoBehaviour {
 
 
 	void FixedUpdate () {
-		Ai_movement guardMovement = gameObject.GetComponent<Ai_movement>();
-		bool chase = guardMovement.GetChase ();
+		Ai_Chase guardMovement = gameObject.GetComponent<Ai_Chase>();
+		Sight vision = gameObject.GetComponent<Sight>();
+		bool chase = vision.GetChase ();
 		if (chase) { 
 			guardMovement.ChasingMovement();
 		} else { 

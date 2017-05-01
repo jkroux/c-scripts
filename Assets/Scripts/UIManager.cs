@@ -114,4 +114,5 @@ public class UIManager : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene(index);
 	}
+
 }

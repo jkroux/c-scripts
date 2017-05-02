@@ -2914,7 +2914,7 @@ Prefab:
     - target: {fileID: 114818896773347444, guid: 803ffaf09245ca24f9d6ec57aaebecbe,
         type: 2}
       propertyPath: numOfArt
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770362862681470, guid: 803ffaf09245ca24f9d6ec57aaebecbe, type: 2}

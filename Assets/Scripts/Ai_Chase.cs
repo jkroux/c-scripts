@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Ai_Chase : MonoBehaviour
 {   public GameObject player;
-	private float chasingSpeed = 0.08f;
+	private float chasingSpeed = 0.16f;
 	public int pauseTime=9;
 	private bool chase = false;	  
 	private float accel = 0;	

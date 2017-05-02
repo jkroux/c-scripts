@@ -31,20 +31,21 @@ public class GeneralizedMovement : MonoBehaviour {
 		patrolPointsList.Add (Pos7);
 	}
 
-
+	void Update(){
+	}
 
 	void FixedUpdate () {
 		Ai_Chase guardMovement = gameObject.GetComponent<Ai_Chase>();
 		Sight vision = gameObject.GetComponent<Sight>();
 		bool chase = vision.GetChase ();
-		if (chase) { 
-			guardMovement.ChasingMovement();
-		} else { 
+		if (!chase) { 
 			DefaultMovement ();
+			} 
 		}
-	}
+
 
 	//Guard follows the path to the current patrolPoint
+
 	void DefaultMovement() {	
 		Transform currentPatrolPoint = (Transform) patrolPointsList[indexforPoints]; 
 		float offsetX = (transform.position.x - currentPatrolPoint.position.x);

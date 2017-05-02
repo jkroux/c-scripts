@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-// establishes SightCone and if player is caught for gaurd.
+
 public class Sight : MonoBehaviour {
-	
+	// establishes SightCone and if player is caught for gaurd.
+
 	private float visionAngle = 360;
 	private float stepCount = 180;
 	private bool chase = false;
 	private LayerMask mask;	
 	private int timeOfOutSight = 0;
-//	public float chasingSpeed = 0.15f;
 	public int pauseTime=9;
 	private float hasPaused=0;
 
@@ -18,7 +16,6 @@ public class Sight : MonoBehaviour {
 	void Start () {
 		mask = 1 << 2; 
 		mask = ~mask;
-		
 	}
 	
 	// Update is called once per frame
@@ -62,13 +59,7 @@ public class Sight : MonoBehaviour {
 			}
 		}
 	}
-		//private void stopChasing() {
-		//SpriteRenderer gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer> ();
-		//gaurdchange.color = originalGaurd;
-		//chase = false;
-		//hasPaused = 0;
-		//accel = 0;
-	//}
+
 	public bool GetChase(){
 		return chase;
 	}

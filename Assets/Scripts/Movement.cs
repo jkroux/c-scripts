@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic; //do we need this? It doesn't look like we use it
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 

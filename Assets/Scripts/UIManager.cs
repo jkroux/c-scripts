@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,17 +11,17 @@ public class UIManager : MonoBehaviour {
 	private int caughtIndex = 4;
 	private int highestLevel = 12;
 
-	void Start () {
-		int indexOfScene = SceneManager.GetActiveScene ().buildIndex;
+	void Start() {
+		int indexOfScene = SceneManager.GetActiveScene().buildIndex;
 
 		if (indexOfScene == transitionIndex) {
-			DisplayMeme ();
+			DisplayMeme();
 			previousScene = PlayerPrefs.GetInt ("previousScene");
 			nextScene = previousScene + 1;
 		} else if (indexOfScene == caughtIndex) {
 			previousScene = PlayerPrefs.GetInt ("previousScene");
 			nextScene = previousScene + 1;
-		}else {
+		} else {
 			Time.timeScale = 1;
 			pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 			hidePaused();
@@ -31,15 +30,15 @@ public class UIManager : MonoBehaviour {
 
 	void DisplayMeme(){
 		GameObject meme = GameObject.Find("Meme");
-		Image image = meme.GetComponent<Image> ();
+		Image image = meme.GetComponent<Image>();
 		image.sprite = UpdateMemes.mostRecentSprite;
 	}
 
 	//https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
-	void Update () {
+	void Update() {
 		if(Input.GetKeyDown(KeyCode.P))
 		{
-			pauseControl ();
+			pauseControl();
 		}
 	}
 		
@@ -90,7 +89,7 @@ public class UIManager : MonoBehaviour {
 
 	//Quit the game
 	public void quit(){
-		Application.Quit ();
+		Application.Quit();
 		Debug.Log("Game is exiting");
 	}
 

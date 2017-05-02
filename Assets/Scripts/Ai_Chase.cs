@@ -7,12 +7,12 @@ public class Ai_Chase : MonoBehaviour {
 	// http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 
 	public GameObject player;
+	public int pauseTime = 9;
+	private bool chase = false;
 	private float chasingSpeed = 0.08f;
-	public int pauseTime=9;
-	private bool chase = false;	  
-	private float accel = 0;	
-	private Color originalColor;
+	private float accel = 0;
 	private float hasPaused=0;
+	private Color originalColor;
 	private Sight vision;
 	private SpriteRenderer guardRenderer;
 
@@ -27,13 +27,13 @@ public class Ai_Chase : MonoBehaviour {
 
 	//track chasing mode
 	void FixedUpdate(){
-		if (vision.GetChase ()) {
+		if (vision.GetChase()) {
 			//Double call of the ChasingMovement produces the most enjoyable chasing feeling
-			ChasingMovement ();
-			ChasingMovement ();
-		} 
+			ChasingMovement();
+			ChasingMovement();
+		}
 		else if (vision.GetChase()==false){
-			stopChasing ();
+			stopChasing();
 		}
 	}
 
@@ -76,20 +76,20 @@ public class Ai_Chase : MonoBehaviour {
 
 		Vector2 unitVector = new Vector2 (x/d, y/d);
 		if (accel <1) {
-			transform.Translate (unitVector * (-chasingSpeed*accel));
+			transform.Translate(unitVector * (-chasingSpeed*accel));
 			accel = accel + 0.005f; 
 		}
 
 		else{
-			transform.Translate (unitVector * -chasingSpeed);
+			transform.Translate(unitVector * -chasingSpeed);
 		}
 	}
 		
 	IEnumerator ChangeToCaught(){
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds(1.0f);
 		float fadeTime = GameObject.Find("UIManager").GetComponent<Fading>().BeginFade(1);
 		yield return new WaitForSeconds (fadeTime);
-		SceneManager.LoadScene ("Caught");
+		SceneManager.LoadScene("Caught");
 	}
 
 }

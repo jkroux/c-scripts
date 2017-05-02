@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-// movement to player solved using unity tutorial
-//http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 
-public class Ai_Chase : MonoBehaviour
-{   public GameObject player;
+public class Ai_Chase : MonoBehaviour {
+	// movement to player solved using unity tutorial
+	// http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
+
+	public GameObject player;
 	private float chasingSpeed = 0.08f;
 	public int pauseTime=9;
 	private bool chase = false;	  
 	private float accel = 0;	
-	private Color originalGaurd;
+	private Color originalColor;
 	private float hasPaused=0;
 	private Sight vision;
-	private SpriteRenderer gaurdchange;
+	private SpriteRenderer guardRenderer;
+
+
 	// Use this for initialization
 	void Start()
 	{
 		vision = gameObject.GetComponent<Sight>();
-		gaurdchange = (SpriteRenderer)gameObject.GetComponent<Renderer>();
-		originalGaurd = gaurdchange.color;
+		guardRenderer = (SpriteRenderer)gameObject.GetComponent<Renderer>();
+		originalColor = guardRenderer.color;
 	}
 
 	//track chasing mode
@@ -32,16 +34,14 @@ public class Ai_Chase : MonoBehaviour
 			stopChasing ();
 		}
 	}
-		
 
 
 	private void stopChasing() {	
-		gaurdchange.color = originalGaurd;
+		guardRenderer.color = originalColor;
 		chase = false;
 		hasPaused = 0;
 		accel = 0;
 	}
-
 
 
 	//See whether the guard catch the player
@@ -89,8 +89,5 @@ public class Ai_Chase : MonoBehaviour
 		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene ("Caught");
 	}
-
-
-
 
 }

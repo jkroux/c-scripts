@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // Most of the code in this script are copied from the tutorial "How to Fade Between Scenes in Unity"
 // https://www.youtube.com/watch?v=0HwZQt94uHQ

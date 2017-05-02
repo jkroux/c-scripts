@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-// used online sound managment unity tutorial https://unity3d.com/learn/tutorials/topics/audio/sound-effects-scripting
+﻿using UnityEngine;
+
 public class SoundManagement : MonoBehaviour {
-	
+	// used online sound managment unity tutorial https://unity3d.com/learn/tutorials/topics/audio/sound-effects-scripting
+
 	public AudioClip clip;
 	public GameObject player;
 	public AudioClip clip2;
@@ -20,7 +19,6 @@ public class SoundManagement : MonoBehaviour {
 		source  = GetComponent<AudioSource>();
 		volume = 1.0f;
 		cardValueScript= player.GetComponent<PlayerPickups>();
-			
 	}
 	
 	// Update is called once per frame

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Ai_Chase : MonoBehaviour
 {   public GameObject player;
-	private float chasingSpeed = 0.16f;
+	private float chasingSpeed = 0.08f;
 	public int pauseTime=9;
 	private bool chase = false;	  
 	private float accel = 0;	
@@ -26,7 +26,9 @@ public class Ai_Chase : MonoBehaviour
 	//track chasing mode
 	void FixedUpdate(){
 		if (vision.GetChase ()) {
-			ChasingMovement ();		
+			//Double call of the ChasingMovement produces the most enjoyable chasing feeling
+			ChasingMovement ();
+			ChasingMovement ();
 		} 
 		else if (vision.GetChase()==false){
 			stopChasing ();

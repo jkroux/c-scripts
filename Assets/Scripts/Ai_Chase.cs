@@ -7,11 +7,8 @@ public class Ai_Chase : MonoBehaviour {
 	// http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 
 	public GameObject player;
-	public int pauseTime = 9;
-	private bool chase = false;
 	private float chasingSpeed = 0.08f;
 	private float accel = 0;
-	private float hasPaused=0;
 	private Color originalColor;
 	private Sight vision;
 	private SpriteRenderer guardRenderer;
@@ -40,8 +37,6 @@ public class Ai_Chase : MonoBehaviour {
 
 	private void stopChasing() {	
 		guardRenderer.color = originalColor;
-		chase = false;
-		hasPaused = 0;
 		accel = 0;
 	}
 

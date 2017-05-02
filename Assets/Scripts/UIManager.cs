@@ -85,6 +85,10 @@ public class UIManager : MonoBehaviour {
 	public void LoadScene(string name){
 		StartCoroutine(LevelLoad(name));
 	} 
+
+	public void LoadHomepage(){
+		SceneManager.LoadScene("Homepage");
+	}
 		
 
 	//Quit the game

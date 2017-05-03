@@ -7,7 +7,7 @@ public class Ai_Chase : MonoBehaviour {
 	// http://answers.unity3d.com/questions/32618/changing-box-collider-size.html
 
 	public GameObject player;
-	private float chasingSpeed = 0.08f;
+	private float chasingSpeed = 0.07f;
 	private float accel = 0;
 	private Color originalColor;
 	private Sight vision;
@@ -29,7 +29,7 @@ public class Ai_Chase : MonoBehaviour {
 			ChasingMovement();
 			ChasingMovement();
 		}
-		else if (vision.GetChase()==false){
+		else{
 			stopChasing();
 		}
 	}

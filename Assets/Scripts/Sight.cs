@@ -9,7 +9,7 @@ public class Sight : MonoBehaviour {
 	private bool chase = false;
 	private LayerMask mask;	
 	private int timeOfOutSight = 0;
-	public int pauseTime=9;
+	private int pauseTime=9;
 	private float hasPaused=0;
 
 	// Use this for initialization
@@ -55,6 +55,7 @@ public class Sight : MonoBehaviour {
 					hasPaused++;
 				} else {
 					chase=false;
+					hasPaused = 0;
 				}
 			}
 		}

@@ -3189,6 +3189,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114589982821059212, guid: 50a88c6cde463db4c949741f7516451d,
+        type: 2}
+      propertyPath: spriteToPass
+      value: 
+      objectReference: {fileID: 21300000, guid: c563d18faf07d9d47bc188c6f3bd6276,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50a88c6cde463db4c949741f7516451d, type: 2}
   m_IsPrefabParent: 0

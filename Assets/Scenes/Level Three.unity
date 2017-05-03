@@ -649,7 +649,7 @@ Prefab:
         type: 2}
       propertyPath: spriteToPass
       value: 
-      objectReference: {fileID: 21300000, guid: 1a6ca5ea66a208446a85d8ec08e7bf02,
+      objectReference: {fileID: 21300000, guid: a1ee4dbc8d00c3549898f5e14890bd47,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50a88c6cde463db4c949741f7516451d, type: 2}

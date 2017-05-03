@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872692, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -496,7 +496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 9
 --- !u!1 &560943378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 9
 --- !u!1 &1086570781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,7 +2507,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7c6b141770f07d84db481197a6a08d22, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2887,7 +2885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 9
 --- !u!1 &1742596694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,7 +3037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 9
 --- !u!1 &1744426123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,7 +3563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1cd4717d7fba4aaa353d8f6f4b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 9
 --- !u!1 &1892590840
 GameObject:
   m_ObjectHideFlags: 0
